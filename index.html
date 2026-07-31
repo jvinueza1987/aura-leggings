@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aura Leggings · Ropa Deportiva</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <!-- Font Awesome (iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+
+    <!-- ===== ENCABEZADO ===== -->
+    <header>
+        <div class="logo">AURA <span>LEGGINGS</span></div>
+        <nav>
+            <a href="#" onclick="mostrarInicio()">Inicio</a>
+            <a href="#" onclick="mostrarTienda()">Tienda</a>
+            <a href="#" onclick="mostrarNosotros()">Nosotros</a>
+            <a href="#" onclick="mostrarContacto()">Contacto</a>
+            <div class="icono-carrito" onclick="abrirCarrito()">
+                <i class="fas fa-shopping-bag"></i> <span id="contador">0</span>
+            </div>
+        </nav>
+        <!-- Menú hamburguesa (para móvil) -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- ===== CARRITO LATERAL ===== -->
+    <div id="carrito" class="carrito">
+        <div class="cabecera-carrito">
+            <h2><i class="fas fa-shopping-bag"></i> Mi Carrito</h2>
+            <button onclick="cerrarCarrito()"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="listaCarrito"></div>
+        <div class="total-carrito">
+            <h3>Total: $<span id="total">0.00</span></h3>
+        </div>
+        <div id="datos-cliente">
+            <label><i class="fas fa-user"></i> Nombre completo:</label>
+            <input type="text" id="nombre-cliente" placeholder="Tu nombre" required />
+            <label><i class="fas fa-map-marker-alt"></i> Dirección de entrega:</label>
+            <input type="text" id="direccion-cliente" placeholder="Calle, número, ciudad" required />
+            <label><i class="fas fa-credit-card"></i> Forma de pago:</label>
+            <select id="pago-cliente">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
+        <button class="boton finalizar" onclick="enviarWhatsApp()">
+            <i class="fab fa-whatsapp"></i> Finalizar compra
+        </button>
+    </div>
+
+    <!-- ===== SECCIONES DINÁMICAS ===== -->
+
+    <!-- === INICIO (HERO CON IMAGEN) === -->
+    <section id="seccion-inicio" class="seccion activa">
+        <div class="hero" style="background-image: url('ironbymironova_hero.jpg'); background-size: cover; background-position: center; min-height: 90vh;">
+            <div class="hero-overlay"></div>
+            <div class="hero-contenido">
+                <div class="hero-texto">
+                    <span class="etiqueta">🔥 NUEVA COLECCIÓN 2026</span>
+                    <h1 id="titulo-hero">Ropa deportiva <br/><span>para mujeres excepcionales</span></h1>
+                    <p>Leggins, enterizos, shorts, tops y conjuntos diseñados para acompañarte en cada movimiento con estilo y confort.</p>
+                    <div class="hero-botones">
+                        <a href="#" class="boton primario pulse" onclick="mostrarTienda()">Explorar Tienda <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="boton secundario" onclick="mostrarNosotros()">Conócenos</a>
+                    </div>
+                </div>
+                <div class="hero-imagen">
+                    <img src="kaze_sport_1697560218458.jpg" alt="Modelo con leggings" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === TIENDA (categorías) === -->
+    <section id="seccion-tienda" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Nuestras Categorías</h2>
+            <p class="subtitulo-seccion">Encuentra el look perfecto para cada entrenamiento</p>
+            <div class="productos" id="lista-categorias">
+                <!-- Generado por JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- === GALERÍA DE CATEGORÍA === -->
+    <section id="seccion-galeria" class="seccion">
+        <div class="contenedor">
+            <button class="boton volver" onclick="mostrarTienda()"><i class="fas fa-arrow-left"></i> Volver a tienda</button>
+            <h2 id="titulo-galeria" class="titulo-seccion"></h2>
+            <div class="productos" id="lista-galeria"></div>
+        </div>
+    </section>
+
+    <!-- === NOSOTROS === -->
+    <section id="seccion-nosotros" class="seccion">
+        <div class="contenedor nosotros">
+            <div class="nosotros-texto">
+                <h2 class="titulo-seccion">Sobre <span>Aura Leggings</span></h2>
+                <p>Somos una marca ecuatoriana apasionada por el deporte y el bienestar. Creamos ropa deportiva de alta calidad, con telas que se adaptan a tu cuerpo y te brindan libertad de movimiento sin sacrificar el estilo.</p>
+                <div class="valores">
+                    <div class="valor">
+                        <i class="fas fa-leaf"></i>
+                        <h4>Materiales sostenibles</h4>
+                        <p>Telas ecológicas y transpirables.</p>
+                    </div>
+                    <div class="valor">
+                        <i class="fas fa-heart"></i>
+                        <h4>Hecho con amor</h4>
+                        <p>Cada prenda está diseñada pensando en ti.</p>
+                    </div>
+                    <div class="valor">
+                        <i class="fas fa-star"></i>
+                        <h4>Calidad garantizada</h4>
+                        <p>Costuras resistentes y ajuste perfecto.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="nosotros-imagen">
+                <img src="by_kolosovska_1768963878155.jpg" alt="Mujer haciendo ejercicio" />
+            </div>
+        </div>
+    </section>
+
+    <!-- === CONTACTO === -->
+    <section id="seccion-contacto" class="seccion">
+        <div class="contenedor contacto">
+            <h2 class="titulo-seccion">Contáctanos</h2>
+            <div class="contacto-info">
+                <div class="contacto-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:aura@leggings.ec">aura@leggings.ec</a>
+                </div>
+                <div class="contacto-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/593978660147" target="_blank">+593 97 866 0147</a>
+                </div>
+                <div class="contacto-item">
+                    <i class="fas fa-map-pin"></i>
+                    <span>Quito - Ecuador</span>
+                </div>
+                <div class="contacto-item">
+                    <i class="fab fa-instagram"></i>
+                    <span>@aura_leggings_ec</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BOTÓN SUBIR ARRIBA ===== -->
+    <button id="btn-subir" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ===== FOOTER (PARTE NEGRA - ABAJO DEL TODO) ===== -->
+    <footer>
+        <div class="footer-contenido">
+            <div class="footer-col">
+                <h3>AURA LEGGINGS</h3>
+                <p>Ropa deportiva para mujeres que inspiran.</p>
+                <div class="redes">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces rápidos</h4>
+                <a href="#" onclick="mostrarInicio()">Inicio</a>
+                <a href="#" onclick="mostrarTienda()">Tienda</a>
+                <a href="#" onclick="mostrarNosotros()">Nosotros</a>
+                <a href="#" onclick="mostrarContacto()">Contacto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-phone"></i> +593 97 866 0147</p>
+                <p><i class="fas fa-envelope"></i> aura@leggings.ec</p>
+                <p><i class="fas fa-map-marker-alt"></i> Quito, Ecuador</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Aura Leggings Ec. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
