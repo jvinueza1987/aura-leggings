@@ -978,3 +978,16 @@ footer {
 .producto-galeria img:hover {
     transform: scale(1.02);
 }
+.boton-whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: bold;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+.boton-whatsapp:hover {
+    background: #128C7E;
+}
