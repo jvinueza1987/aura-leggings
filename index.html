@@ -6,7 +6,7 @@
     <title>Aura Leggings · Ropa Deportiva</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-    <!-- Font Awesome (iconos) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="estilo.css" />
 </head>
@@ -24,7 +24,6 @@
                 <i class="fas fa-shopping-bag"></i> <span id="contador">0</span>
             </div>
         </nav>
-        <!-- Menú hamburguesa (para móvil) -->
         <div class="menu-toggle" id="menu-toggle">
             <i class="fas fa-bars"></i>
         </div>
@@ -60,9 +59,9 @@
 
     <!-- ===== SECCIONES DINÁMICAS ===== -->
 
-    <!-- === INICIO (HERO CON IMAGEN) === -->
+    <!-- === INICIO === -->
     <section id="seccion-inicio" class="seccion activa">
-        <div class="hero" style="background-image: url('ironbymironova_hero.jpg'); background-size: cover; background-position: center; min-height: 90vh;">
+        <div class="hero" style="background-image: url('hero.jpg'); background-size: cover; background-position: center; min-height: 90vh;">
             <div class="hero-overlay"></div>
             <div class="hero-contenido">
                 <div class="hero-texto">
@@ -75,24 +74,22 @@
                     </div>
                 </div>
                 <div class="hero-imagen">
-                    <img src="kaze_sport_1697560218458.jpg" alt="Modelo con leggings" />
+                    <img src="modelo1.jpg" alt="Modelo con leggings" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- === TIENDA (categorías) === -->
+    <!-- === TIENDA === -->
     <section id="seccion-tienda" class="seccion">
         <div class="contenedor">
             <h2 class="titulo-seccion">Nuestras Categorías</h2>
             <p class="subtitulo-seccion">Encuentra el look perfecto para cada entrenamiento</p>
-            <div class="productos" id="lista-categorias">
-                <!-- Generado por JS -->
-            </div>
+            <div class="productos" id="lista-categorias"></div>
         </div>
     </section>
 
-    <!-- === GALERÍA DE CATEGORÍA === -->
+    <!-- === GALERÍA === -->
     <section id="seccion-galeria" class="seccion">
         <div class="contenedor">
             <button class="boton volver" onclick="mostrarTienda()"><i class="fas fa-arrow-left"></i> Volver a tienda</button>
@@ -126,7 +123,7 @@
                 </div>
             </div>
             <div class="nosotros-imagen">
-                <img src="by_kolosovska_1768963878155.jpg" alt="Mujer haciendo ejercicio" />
+                <img src="modelo2.jpg" alt="Mujer haciendo ejercicio" />
             </div>
         </div>
     </section>
@@ -156,12 +153,12 @@
         </div>
     </section>
 
-    <!-- ===== BOTÓN SUBIR ARRIBA ===== -->
+    <!-- ===== BOTÓN SUBIR ===== -->
     <button id="btn-subir" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- ===== FOOTER (PARTE NEGRA - ABAJO DEL TODO) ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer>
         <div class="footer-contenido">
             <div class="footer-col">
@@ -191,6 +188,21 @@
             <p>&copy; 2026 Aura Leggings Ec. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- ===== MODAL CARRUSEL (DENTRO DEL BODY) ===== -->
+    <div id="modal-carrusel" class="modal-carrusel">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarCarrusel()">&times;</span>
+            <div class="carrusel-slides">
+                <img id="carrusel-imagen" src="" alt="Imagen del producto">
+            </div>
+            <div class="carrusel-controles">
+                <button class="carrusel-btn anterior" onclick="cambiarImagen(-1)">&#10094;</button>
+                <span id="carrusel-indice">1 / 5</span>
+                <button class="carrusel-btn siguiente" onclick="cambiarImagen(1)">&#10095;</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
