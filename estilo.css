@@ -167,7 +167,7 @@ nav.abierto a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Cambiado de 0.5 a 0.3 (30% de opacidad) */
+    background: rgba(0, 0, 0, 0.3); /* 30% de opacidad */
     z-index: 1;
 }
 
@@ -634,14 +634,6 @@ nav.abierto a {
     font-size: 0.85rem;
 }
 
-@media (max-width: 480px) {
-    .nosotros-carrusel-btn {
-        width: 34px;
-        height: 34px;
-        font-size: 0.9rem;
-    }
-}
-
 /* ===== CONTACTO ===== */
 .contacto {
     text-align: center;
@@ -844,6 +836,7 @@ footer {
     background: #C4455C;
     transform: scale(1.1);
 }
+
 /* ===== BOTÓN FLOTANTE WHATSAPP ===== */
 #btn-whatsapp {
     position: fixed;
@@ -876,84 +869,55 @@ footer {
     100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
 }
 
-@media (max-width: 480px) {
-    #btn-whatsapp {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        bottom: 20px;
-        left: 20px;
-    }
+/* ===== CARRUSEL DE PRODUCTOS EN HERO (VERSIÓN ESCRITORIO) ===== */
+.hero-carrusel-contenedor {
+    position: absolute;
+    bottom: 150px;
+    right: 0px;
+    width: 280px;
+    height: 360px;
+    background: #ffffff;
+    border-radius: 20px 0 0 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    transform: rotate(-4deg);
+    transform-origin: right bottom;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 992px) {
-    .hero-contenido {
-        flex-direction: column;
-        text-align: center;
-    }
-    .hero-texto p {
-        margin: 0 auto 30px;
-    }
-    .hero-botones {
-        justify-content: center;
-    }
-    .hero-imagen img {
-        max-width: 300px;
-    }
-    .nosotros {
-        flex-direction: column;
-        text-align: center;
-    }
-    .nosotros-texto .titulo-seccion {
-        text-align: center;
-    }
-    .valores {
-        justify-content: center;
-    }
+#img-hero-carrusel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: opacity 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
-    header { padding: 12px 20px; }
-    nav a { display: none; }
-    .menu-toggle { display: block; }
-    .hero { background-attachment: scroll; min-height: 70vh; padding: 40px 20px 0; }
-    .hero-texto h1 { font-size: 2.8rem; }
-    #titulo-hero { white-space: normal; border-right: none; animation: none; }
-    .productos { grid-template-columns: 1fr 1fr; }
-    .carrito { width: 320px; right: -360px; }
-    
-    /* ===== AJUSTE PARA QUE EL CARRUSEL APAREZCA EN MÓVILES ===== */
-    .hero-carrusel-contenedor {
-        display: flex; /* Eliminado el display: none */
-        width: 140px;
-        height: 180px;
-        bottom: 100px; /* Un poco más arriba para no tapar el botón de WhatsApp */
-        right: 0px;
-        border-radius: 15px 0 0 15px;
-        padding: 5px;
-        transform: rotate(-2deg);
-    }
-    .carrusel-hero-btn {
-        width: 24px;
-        height: 24px;
-        font-size: 0.8rem;
-    }
-    #img-hero-carrusel {
-        min-height: unset; /* Quitamos el tamaño mínimo forzado */
-        border-radius: 10px;
-    }
+.carrusel-hero-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    flex-shrink: 0;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (max-width: 480px) {
-    .productos {
-        grid-template-columns: 1fr;
-    }
-    .hero-texto h1 {
-        font-size: 2.2rem;
-    }
+.carrusel-hero-btn:hover {
+    background: #E07A8C;
 }
-/* ===== MODAL CARRUSEL ===== */
+
+/* ===== MODAL CARRUSEL (Galería de productos) ===== */
 .modal-carrusel {
     display: none;
     position: fixed;
@@ -1048,7 +1012,181 @@ footer {
     border-radius: 30px;
 }
 
-/* Responsive */
+.producto-galeria img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.producto-galeria img:hover {
+    transform: scale(1.02);
+}
+
+.boton-whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: inline-block;
+    font-weight: bold;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.boton-whatsapp:hover {
+    background: #128C7E;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .hero-contenido {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-texto p {
+        margin: 0 auto 30px;
+    }
+    .hero-botones {
+        justify-content: center;
+    }
+    .hero-imagen img {
+        max-width: 300px;
+    }
+    .nosotros {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nosotros-texto .titulo-seccion {
+        text-align: center;
+    }
+    .valores {
+        justify-content: center;
+    }
+    /* Carrusel para Tablets */
+    .hero-carrusel-contenedor {
+        width: 200px;
+        height: 260px;
+        bottom: 60px;
+        right: 0px;
+        border-radius: 15px 0 0 15px;
+        transform: rotate(-3deg);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 15px;
+    }
+    
+    /* Logotipo arreglado para que no se corte en dos líneas */
+    .logo {
+        font-size: 1.2rem;
+        white-space: nowrap;
+        letter-spacing: 1px;
+    }
+    
+    nav a {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .hero {
+        background-attachment: scroll;
+        min-height: 70vh;
+        padding: 40px 20px 0;
+    }
+    .hero-texto h1 {
+        font-size: 2.2rem;
+    }
+    .hero-texto p {
+        font-size: 1rem;
+    }
+    #titulo-hero {
+        white-space: normal;
+        border-right: none;
+        animation: none;
+    }
+    .productos {
+        grid-template-columns: 1fr 1fr;
+    }
+    .carrito {
+        width: 320px;
+        right: -360px;
+    }
+
+    /* Carrusel para Móviles (Forzado para que aparezca) */
+    .hero-carrusel-contenedor {
+        display: flex !important;
+        width: 110px;
+        height: 140px;
+        bottom: 140px;
+        right: 0px;
+        border-radius: 12px 0 0 12px;
+        padding: 5px;
+        transform: rotate(-3deg);
+        transform-origin: right bottom;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        background: #ffffff;
+        z-index: 100 !important;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .carrusel-hero-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #img-hero-carrusel {
+        min-height: unset;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: opacity 0.3s ease-in-out;
+    }
+}
+
+@media (max-width: 480px) {
+    .productos {
+        grid-template-columns: 1fr;
+    }
+    .hero-texto h1 {
+        font-size: 2.2rem;
+    }
+    
+    /* Ajuste del botón de WhatsApp en pantallas muy pequeñas */
+    #btn-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    /* Ajuste del carrusel para móviles muy pequeños */
+    .hero-carrusel-contenedor {
+        width: 90px;
+        height: 120px;
+        bottom: 110px;
+    }
+
+    .nosotros-carrusel-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 600px) {
     .carrusel-btn {
         width: 40px;
@@ -1062,101 +1200,5 @@ footer {
     .cerrar-modal {
         top: -30px;
         font-size: 2rem;
-    }
-}
-.producto-galeria img {
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.producto-galeria img:hover {
-    transform: scale(1.02);
-}
-.boton-whatsapp {
-    background: #25D366;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 50px;
-    display: inline-block;
-    font-weight: bold;
-    transition: background 0.3s;
-    text-decoration: none;
-}
-.boton-whatsapp:hover {
-    background: #128C7E;
-}
-/* ===== CARRUSEL DE PRODUCTOS EN HERO ===== */
-.hero-carrusel-contenedor {
-    position: absolute;
-    bottom: 150px;          /* Subido mucho más arriba que antes (era 80px) */
-    right: 0px;             /* Pegado al extremo derecho de la pantalla */
-    width: 280px;
-    height: 360px;
-    background: #ffffff;
-    border-radius: 20px 0 0 20px; /* Solo redondeado a la izquierda para que pegue */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    transform: rotate(-4deg);
-    transform-origin: right bottom; /* El giro se ancla a la esquina inferior derecha */
-}
-
-#img-hero-carrusel {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-    transition: opacity 0.3s ease-in-out;
-    min-height: 300px; /* Fuerza un tamaño mínimo para que se vea */
-}
-
-#img-hero-carrusel {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.carrusel-hero-btn {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s;
-    flex-shrink: 0;
-    z-index: 11;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carrusel-hero-btn:hover {
-    background: #E07A8C;
-}
-
-/* ===== RESPONSIVE (Oculta el carrusel en móviles para no estorbar) ===== */
-/* ===== RESPONSIVE (Oculta el carrusel en móviles para no estorbar) ===== */
-@media (max-width: 992px) {
-    .hero-carrusel-contenedor {
-        width: 200px;      /* Reduce el tamaño en tabletas */
-        height: 260px;
-        bottom: 60px;      /* Ajusta la altura */
-        right: 0px;
-        border-radius: 15px 0 0 15px;
-        transform: rotate(-3deg);
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-carrusel-contenedor {
-        display: none; /* Se oculta en celulares */
     }
 }
