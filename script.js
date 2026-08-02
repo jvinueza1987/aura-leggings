@@ -1,7 +1,6 @@
 // ===== CATÁLOGO DE PRODUCTOS =====
 const productos = [
     // ===== LEGGINGS =====
-// ===== LEGGINGS (con imágenes extra y tallas) =====
 { 
     id: 1, 
     nombre: 'Legging Agua Marina', 
@@ -188,6 +187,7 @@ const productos = [
         imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Próximamente',
         tallas: {}
     },
+    
     // ===== SHORTS =====
     {
         id: 201,
@@ -392,8 +392,8 @@ function mostrarCategoria(categoria) {
         // Construir array completo de imágenes (portada + extras)
         const todasImagenes = [p.imagen, ...(p.imagenes_extra || [])];
         
-        // Escapar correctamente para el onclick
-        const imagenesJSON = JSON.stringify(todasImagenes).replace(/"/g, '&quot;');
+        // === CAMBIO CLAVE: Convertir el array en una cadena unida por "||" ===
+        const imagenesStr = todasImagenes.join('||');
         
         const tallasHTML = renderizarTallas(p.tallas);
         const badgeHTML = p.precio === 0 ? 
@@ -403,7 +403,9 @@ function mostrarCategoria(categoria) {
             ${badgeHTML}
             <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" 
                  onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Sin+Imagen'"
-                 onclick="abrirCarrusel(${imagenesJSON})" style="cursor: pointer;">
+                 onclick="abrirCarrusel(this.dataset.imagenes.split('||'))" 
+                 style="cursor: pointer;"
+                 data-imagenes="${imagenesStr}">
             <h4>${p.nombre}</h4>
             ${tallasHTML}
             ${p.precio > 0 ? `<p class="precio">$${p.precio.toFixed(2)}</p>` : ''}
@@ -480,11 +482,16 @@ function renderizarCategorias() {
     });
 }
 
-// ===== CARRUSEL (Galería principal) =====
+// ===== CARRUSEL DE IMÁGENES (Galería principal) =====
 let imagenesCarrusel = [];
 let indiceActual = 0;
 
 function abrirCarrusel(imagenes) {
+    // Si por alguna razón nos llegara un string sin dividir, lo dividimos
+    if (typeof imagenes === 'string') {
+        imagenes = imagenes.split('||');
+    }
+    
     if (!imagenes || imagenes.length === 0) return;
     
     imagenesCarrusel = imagenes;
@@ -523,6 +530,7 @@ function cambiarImagen(direccion) {
     imagen.src = imagenesCarrusel[indiceActual];
     indice.textContent = `${indiceActual + 1} / ${imagenesCarrusel.length}`;
 }
+
 
 // ===== CARRITO =====
 function cargarCarrito() {
@@ -650,9 +658,6 @@ function enviarWhatsApp() {
 }
 
 // ===== CARRUSEL DEL HERO (4 IMÁGENES) =====
-/* 🟢 AVISO: Verifica si las imágenes están dentro de la carpeta 'img/' o en la raíz */
-/* Si las moviste a la carpeta img/, usa: 'img/portada1.jpg' */
-/* Si las dejaste junto al index.html, usa: 'portada1.jpg' */
 const imagenesHero = [
     'img/portada1.jpg',
     'img/portada2.jpg',
@@ -678,6 +683,7 @@ function cambiarImgHero(direccion) {
         }, 200);
     }
 }
+
 // ===== CARRUSEL DE LA SECCIÓN NOSOTROS (7 IMÁGENES) =====
 const imagenesNosotros = [
     'img/nosotros/nosotros1.jpg',
@@ -714,29 +720,42 @@ function cambiarImgNosotros(direccion) {
         indiceEl.textContent = `${indiceNosotros + 1} / ${imagenesNosotros.length}`;
     }
 }
+
 // ===== INICIALIZAR =====
 document.addEventListener('DOMContentLoaded', function() {
     cargarCarrito();
     mostrarInicio();
 
-    // Inicializar la primera imagen del carrusel del Hero
-    const imgHero = document.getElementById('img-hero-carrusel');
-    if (imgHero && imagenesHero.length > 0) {
-        imgHero.src = imagenesHero[0];
+    // ===== MENÚ HAMBURGUESA =====
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.querySelector('nav');
+    if (toggle) {
+        toggle.addEventListener('click', function() {
+            nav.classList.toggle('abierto');
+        });
     }
-// Inicializar la primera imagen del carrusel de Nosotros
-const imgNosotros = document.getElementById('img-nosotros-carrusel');
-if (imgNosotros && imagenesNosotros.length > 0) {
-    imgNosotros.src = imagenesNosotros[0];
-        // Cerrar el menú hamburguesa al hacer clic en cualquier enlace
+
+    // ===== CERRAR MENÚ AL HACER CLIC EN UN ENLACE =====
     const enlacesMenu = document.querySelectorAll('nav a');
     enlacesMenu.forEach(enlace => {
         enlace.addEventListener('click', function() {
             nav.classList.remove('abierto');
         });
     });
-}
-    // Botón subir
+
+    // ===== INICIALIZAR CARRUSEL DEL HERO =====
+    const imgHero = document.getElementById('img-hero-carrusel');
+    if (imgHero && imagenesHero.length > 0) {
+        imgHero.src = imagenesHero[0];
+    }
+
+    // ===== INICIALIZAR CARRUSEL DE NOSOTROS =====
+    const imgNosotros = document.getElementById('img-nosotros-carrusel');
+    if (imgNosotros && imagenesNosotros.length > 0) {
+        imgNosotros.src = imagenesNosotros[0];
+    }
+
+    // ===== BOTÓN SUBIR =====
     const btnSubir = document.getElementById('btn-subir');
     window.addEventListener('scroll', function() {
         if (window.scrollY > 300) {
@@ -746,16 +765,7 @@ if (imgNosotros && imagenesNosotros.length > 0) {
         }
     });
 
-    // Menú hamburguesa
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.querySelector('nav');
-    if (toggle) {
-        toggle.addEventListener('click', function() {
-            nav.classList.toggle('abierto');
-        });
-    }
-
-    // Cerrar carrusel con teclas
+    // ===== CERRAR CARRUSEL CON TECLAS =====
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             cerrarCarrusel();
@@ -768,7 +778,7 @@ if (imgNosotros && imagenesNosotros.length > 0) {
         }
     });
 
-    // Cerrar carrusel al hacer clic fuera
+    // ===== CERRAR CARRUSEL AL HACER CLIC FUERA =====
     document.getElementById('modal-carrusel').addEventListener('click', function(e) {
         if (e.target === this) {
             cerrarCarrusel();

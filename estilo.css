@@ -876,23 +876,35 @@ footer {
     right: 0px;
     width: 280px;
     height: 360px;
-    background: #ffffff;
+    background: transparent !important; /* Elimina el fondo blanco */
     border-radius: 20px 0 0 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    box-shadow: none !important;        /* Elimina la sombra */
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0 !important;              /* Elimina el espacio interno */
     transform: rotate(-4deg);
     transform-origin: right bottom;
+}
+
+/* Asegurar que el contenedor interno de la imagen tampoco tenga fondo */
+.carrusel-hero-slides {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    background: transparent !important;
 }
 
 #img-hero-carrusel {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    border-radius: 20px 0 0 20px; /* El borde redondeado se aplica directamente a la imagen */
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -915,92 +927,6 @@ footer {
 
 .carrusel-hero-btn:hover {
     background: #E07A8C;
-}
-
-/* ===== MODAL CARRUSEL (Galería de productos) ===== */
-.modal-carrusel {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 10000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.modal-carrusel.abierto {
-    display: flex;
-}
-
-.modal-contenido {
-    position: relative;
-    max-width: 800px;
-    width: 100%;
-    background: transparent;
-}
-
-.cerrar-modal {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10;
-    transition: transform 0.3s;
-}
-
-.cerrar-modal:hover {
-    transform: scale(1.2);
-}
-
-.carrusel-slides {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#carrusel-imagen {
-    width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-
-.carrusel-controles {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-    padding: 0 10px;
-}
-
-.carrusel-btn {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 50%;
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: background 0.3s;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carrusel-btn:hover {
-    background: rgba(255,255,255,0.4);
 }
 
 #carrusel-indice {
@@ -1035,6 +961,93 @@ footer {
 .boton-whatsapp:hover {
     background: #128C7E;
 }
+/* ===== MODAL CARRUSEL (GALERÍA DE PRODUCTOS) ===== */
+.modal-carrusel {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo oscuro semitransparente */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-carrusel.abierto {
+    display: flex; /* Se muestra al hacer click */
+}
+
+.modal-contenido {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cerrar-modal:hover {
+    color: #E07A8C; /* El color de tu marca */
+}
+
+#carrusel-imagen {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.carrusel-controles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+#carrusel-indice {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: rgba(0,0,0,0.5);
+    padding: 6px 18px;
+    border-radius: 30px;
+}
+
+.carrusel-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrusel-btn:hover {
+    background: #E07A8C;
+    transform: scale(1.1);
+}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
@@ -1061,7 +1074,8 @@ footer {
     .valores {
         justify-content: center;
     }
-    /* Carrusel para Tablets */
+    
+    /* Carrusel para Tablets (sin cuadro blanco) */
     .hero-carrusel-contenedor {
         width: 200px;
         height: 260px;
@@ -1069,9 +1083,18 @@ footer {
         right: 0px;
         border-radius: 15px 0 0 15px;
         transform: rotate(-3deg);
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+    .carrusel-hero-slides {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+    #img-hero-carrusel {
+        border-radius: 15px 0 0 15px;
     }
 }
-
 @media (max-width: 768px) {
     header {
         padding: 10px 15px;
@@ -1096,7 +1119,7 @@ footer {
         background-attachment: scroll;
         min-height: 70vh;
         padding: 40px 20px 0;
-        background-position: right center !important; /* Mueve la imagen para mostrar el rostro */
+        background-position: right center !important;
         background-size: cover !important;
     }
     
@@ -1119,38 +1142,50 @@ footer {
         right: -360px;
     }
 
-    /* Carrusel más grande, sin espacio blanco y subido */
+    /* ===== CARRUSEL MÓVIL (Corregido sin espacio blanco) ===== */
     .hero-carrusel-contenedor {
         display: flex !important;
-        width: 220px;          /* Más ancho */
-        height: 280px;         /* Más alto */
-        bottom: 250px;         /* Subido para quedar justo debajo de la etiqueta */
+        width: 220px;
+        height: 280px;
+        bottom: 250px;       /* Posición justo debajo de la etiqueta */
         right: 0px;
         border-radius: 15px 0 0 15px;
-        padding: 0px !important; /* ¡Elimina el espacio blanco interno! */
+        padding: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
         transform: rotate(-3deg);
         transform-origin: right bottom;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-        background: #ffffff;
         z-index: 100 !important;
         align-items: center;
         justify-content: space-between;
-        overflow: hidden; /* Asegura que la imagen no se salga del recuadro */
+    }
+    
+    /* CORRECCIÓN PARA ELIMINAR EL ESPACIO EN BLANCO ALREDEDOR DE LA IMAGEN */
+    .carrusel-hero-slides {
+        flex: 1;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 !important;
+        background: transparent !important;
     }
     
     .carrusel-hero-btn {
-        width: 28px;           /* Flechas un poco más grandes */
+        width: 28px;
         height: 28px;
         font-size: 0.9rem;
         background: rgba(0, 0, 0, 0.6);
         color: white;
         border: none;
+        border-radius: 50%;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 12;
-        margin: 0 5px; /* Pequeño margen para que no toquen la imagen */
+        margin: 0 5px;
     }
     
     #img-hero-carrusel {
@@ -1158,12 +1193,12 @@ footer {
         height: 100%;
         width: 100%;
         object-fit: cover;
-        border-radius: 15px 0 0 15px; /* Redondeado solo a la izquierda */
+        border-radius: 15px 0 0 15px;
         transition: opacity 0.3s ease-in-out;
     }
 }
 
-@@media (max-width: 480px) {
+@media (max-width: 480px) {
     .productos {
         grid-template-columns: 1fr;
     }
@@ -1171,7 +1206,7 @@ footer {
         font-size: 2.2rem;
     }
     
-    /* Ajuste del botón de WhatsApp en pantallas muy pequeñas */
+    /* Ajuste del botón de WhatsApp */
     #btn-whatsapp {
         width: 50px;
         height: 50px;
@@ -1180,11 +1215,21 @@ footer {
         left: 20px;
     }
     
-    /* Carrusel adaptable para móviles muy pequeños */
+    /* Carrusel adaptado a pantallas muy pequeñas */
     .hero-carrusel-contenedor {
-        width: 140px;       /* Un poco más pequeño que en tabletas */
-        height: 180px;
-        bottom: 110px;
+        width: 160px;      /* Tamaño más grande que antes */
+        height: 200px;
+        bottom: 180px;     /* Para que no choque con los botones */
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+    
+    .carrusel-hero-slides {
+        padding: 0 !important;
+        background: transparent !important;
+        width: 100%;
+        height: 100%;
     }
 
     .nosotros-carrusel-btn {
