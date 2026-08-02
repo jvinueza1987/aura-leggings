@@ -1090,11 +1090,16 @@ footer {
     .menu-toggle {
         display: block;
     }
+    
+    /* CORRECCIÓN PARA VER LA CARA DE LA MODELO EN EL CELULAR */
     .hero {
         background-attachment: scroll;
         min-height: 70vh;
         padding: 40px 20px 0;
+        background-position: right center !important; /* Mueve la imagen para mostrar el rostro */
+        background-size: cover !important;
     }
+    
     .hero-texto h1 {
         font-size: 2.2rem;
     }
@@ -1114,15 +1119,15 @@ footer {
         right: -360px;
     }
 
-    /* Carrusel para Móviles (Forzado para que aparezca) */
+    /* Carrusel más grande para Móviles */
     .hero-carrusel-contenedor {
         display: flex !important;
-        width: 110px;
-        height: 140px;
-        bottom: 140px;
+        width: 170px;          /* Aumentado de 110px a 170px */
+        height: 220px;         /* Aumentado de 140px a 220px */
+        bottom: 130px;         /* Ajustado para que no tape el botón de WhatsApp */
         right: 0px;
-        border-radius: 12px 0 0 12px;
-        padding: 5px;
+        border-radius: 15px 0 0 15px;
+        padding: 8px;
         transform: rotate(-3deg);
         transform-origin: right bottom;
         box-shadow: 0 8px 20px rgba(0,0,0,0.5);
@@ -1133,9 +1138,9 @@ footer {
     }
     
     .carrusel-hero-btn {
-        width: 20px;
-        height: 20px;
-        font-size: 0.7rem;
+        width: 24px;           /* Flechas un poco más grandes */
+        height: 24px;
+        font-size: 0.8rem;
         background: rgba(0, 0, 0, 0.6);
         color: white;
         border: none;
@@ -1156,7 +1161,7 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+@@media (max-width: 480px) {
     .productos {
         grid-template-columns: 1fr;
     }
@@ -1173,10 +1178,10 @@ footer {
         left: 20px;
     }
     
-    /* Ajuste del carrusel para móviles muy pequeños */
+    /* Carrusel adaptable para móviles muy pequeños */
     .hero-carrusel-contenedor {
-        width: 90px;
-        height: 120px;
+        width: 140px;       /* Un poco más pequeño que en tabletas */
+        height: 180px;
         bottom: 110px;
     }
 
