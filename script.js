@@ -188,13 +188,118 @@ const productos = [
         imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Próximamente',
         tallas: {}
     },
-    { 
-        id: 103, 
-        nombre: 'Shorts (Próximamente)', 
-        categoria: 'shorts', 
-        precio: 0, 
-        imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Próximamente',
-        tallas: {}
+    // ===== SHORTS =====
+    {
+        id: 201,
+        nombre: 'Short Azul',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/azul/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/azul/foto1.jpg',
+            'img/productos/shorts/azul/foto2.jpg',
+            'img/productos/shorts/azul/foto3.jpg',
+            'img/productos/shorts/azul/foto4.jpg'
+        ],
+        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
+    },
+    {
+        id: 202,
+        nombre: 'Short Gris Tie Dye',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/gris tye dye/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/gris tye dye/foto1.jpg',
+            'img/productos/shorts/gris tye dye/foto2.jpg',
+            'img/productos/shorts/gris tye dye/foto3.jpg',
+            'img/productos/shorts/gris tye dye/foto4.jpg'
+        ],
+        tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 }
+    },
+    {
+        id: 203,
+        nombre: 'Short Negro Tie Dye',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/negro tye dye/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/negro tye dye/foto1.jpg',
+            'img/productos/shorts/negro tye dye/foto2.jpg',
+            'img/productos/shorts/negro tye dye/foto3.jpg',
+            'img/productos/shorts/negro tye dye/foto4.jpg'
+        ],
+        tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 }
+    },
+    {
+        id: 204,
+        nombre: 'Short Rosa',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/rosa/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/rosa/foto1.jpg',
+            'img/productos/shorts/rosa/foto2.jpg',
+            'img/productos/shorts/rosa/foto3.jpg',
+            'img/productos/shorts/rosa/foto4.jpg'
+        ],
+        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
+    },
+    {
+        id: 205,
+        nombre: 'Short Rosa Pastel Tie Dye',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/rosa pastel tye dye/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/rosa pastel tye dye/foto1.jpg',
+            'img/productos/shorts/rosa pastel tye dye/foto2.jpg',
+            'img/productos/shorts/rosa pastel tye dye/foto3.jpg',
+            'img/productos/shorts/rosa pastel tye dye/foto4.jpg'
+        ],
+        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
+    },
+    {
+        id: 206,
+        nombre: 'Short Verde Salvia Tie Dye',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/verde salvia tye dye/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/verde salvia tye dye/foto1.jpg',
+            'img/productos/shorts/verde salvia tye dye/foto2.jpg',
+            'img/productos/shorts/verde salvia tye dye/foto3.jpg',
+            'img/productos/shorts/verde salvia tye dye/foto4.jpg'
+        ],
+        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
+    },
+    {
+        id: 207,
+        nombre: 'Short Verde Tie Dye',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/verde tye dye/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/verde tye dye/foto1.jpg',
+            'img/productos/shorts/verde tye dye/foto2.jpg',
+            'img/productos/shorts/verde tye dye/foto3.jpg',
+            'img/productos/shorts/verde tye dye/foto4.jpg'
+        ],
+        tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 }
+    },
+    {
+        id: 208,
+        nombre: 'Short Mocca Tie Dye',
+        categoria: 'shorts',
+        precio: 10.00,
+        imagen: 'img/productos/shorts/mocca tye dye/portada.jpg',
+        imagenes_extra: [
+            'img/productos/shorts/mocca tye dye/foto1.jpg',
+            'img/productos/shorts/mocca tye dye/foto2.jpg',
+            'img/productos/shorts/mocca tye dye/foto3.jpg',
+            'img/productos/shorts/mocca tye dye/foto4.jpg'
+        ],
+        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
     }
 ];
 
@@ -252,7 +357,7 @@ function renderizarTallas(tallas) {
     return html;
 }
 
-// ===== MOSTRAR CATEGORÍA (SIN DESCRIPCIÓN) =====
+// ===== MOSTRAR CATEGORÍA =====
 function mostrarCategoria(categoria) {
     mostrarSeccion('seccion-galeria');
     
@@ -260,7 +365,7 @@ function mostrarCategoria(categoria) {
         'leggings': '👖 Leggings Tye Dye',
         'enterizos': '👗 Enterizos (Próximamente)',
         'conjuntos': '👚 Conjuntos (Próximamente)',
-        'shorts': '🩳 Shorts (Próximamente)'
+        'shorts': '🩳 Shorts'
     };
     
     document.getElementById('titulo-galeria').textContent = titulos[categoria] || categoria;
@@ -341,17 +446,19 @@ function renderizarCategorias() {
             texto: 'Próximamente'
         },
         shorts: { 
-            imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Shorts',
-            texto: 'Próximamente'
+            imagen: 'img/productos/shorts/azul/portada.jpg',
+            texto: `${productos.filter(p => p.categoria === 'shorts' && p.precio > 0).length} modelos disponibles`
         }
     };
     
+    const categoriasActivas = ['leggings', 'shorts'];
+
     categorias.forEach(cat => {
         const info = infoCategoria[cat.id];
         const div = document.createElement('div');
         div.className = 'producto';
         
-        const esProximamente = cat.id !== 'leggings';
+        const esProximamente = !categoriasActivas.includes(cat.id);
         
         div.innerHTML = `
             <img src="${info.imagen}" alt="${cat.nombre}" 
@@ -368,7 +475,7 @@ function renderizarCategorias() {
     });
 }
 
-// ===== CARRUSEL =====
+// ===== CARRUSEL (Galería principal) =====
 let imagenesCarrusel = [];
 let indiceActual = 0;
 
@@ -537,11 +644,86 @@ function enviarWhatsApp() {
     window.open(url, '_blank');
 }
 
+// ===== CARRUSEL DEL HERO (4 IMÁGENES) =====
+/* 🟢 AVISO: Verifica si las imágenes están dentro de la carpeta 'img/' o en la raíz */
+/* Si las moviste a la carpeta img/, usa: 'img/portada1.jpg' */
+/* Si las dejaste junto al index.html, usa: 'portada1.jpg' */
+const imagenesHero = [
+    'img/portada1.jpg',
+    'img/portada2.jpg',
+    'img/portada3.jpg',
+    'img/portada4.jpg'
+];
+let indiceHero = 0;
+
+function cambiarImgHero(direccion) {
+    indiceHero += direccion;
+    if (indiceHero < 0) {
+        indiceHero = imagenesHero.length - 1;
+    } else if (indiceHero >= imagenesHero.length) {
+        indiceHero = 0;
+    }
+    
+    const imgElement = document.getElementById('img-hero-carrusel');
+    if (imgElement) {
+        imgElement.style.opacity = '0.5'; // Efecto de desvanecimiento
+        setTimeout(() => {
+            imgElement.src = imagenesHero[indiceHero];
+            imgElement.style.opacity = '1';
+        }, 200);
+    }
+}
+// ===== CARRUSEL DE LA SECCIÓN NOSOTROS (7 IMÁGENES) =====
+const imagenesNosotros = [
+    'img/nosotros/nosotros1.jpg',
+    'img/nosotros/nosotros2.jpg',
+    'img/nosotros/nosotros3.jpg',
+    'img/nosotros/nosotros4.jpg',
+    'img/nosotros/nosotros5.jpg',
+    'img/nosotros/nosotros6.jpg',
+    'img/nosotros/nosotros7.jpg'
+];
+let indiceNosotros = 0;
+
+function cambiarImgNosotros(direccion) {
+    if (!imagenesNosotros || imagenesNosotros.length === 0) return;
+
+    indiceNosotros += direccion;
+    if (indiceNosotros < 0) {
+        indiceNosotros = imagenesNosotros.length - 1;
+    } else if (indiceNosotros >= imagenesNosotros.length) {
+        indiceNosotros = 0;
+    }
+
+    const imgElement = document.getElementById('img-nosotros-carrusel');
+    const indiceEl = document.getElementById('nosotros-carrusel-indice');
+
+    if (imgElement) {
+        imgElement.style.opacity = '0.4';
+        setTimeout(() => {
+            imgElement.src = imagenesNosotros[indiceNosotros];
+            imgElement.style.opacity = '1';
+        }, 200);
+    }
+    if (indiceEl) {
+        indiceEl.textContent = `${indiceNosotros + 1} / ${imagenesNosotros.length}`;
+    }
+}
 // ===== INICIALIZAR =====
 document.addEventListener('DOMContentLoaded', function() {
     cargarCarrito();
     mostrarInicio();
 
+    // Inicializar la primera imagen del carrusel del Hero
+    const imgHero = document.getElementById('img-hero-carrusel');
+    if (imgHero && imagenesHero.length > 0) {
+        imgHero.src = imagenesHero[0];
+    }
+// Inicializar la primera imagen del carrusel de Nosotros
+const imgNosotros = document.getElementById('img-nosotros-carrusel');
+if (imgNosotros && imagenesNosotros.length > 0) {
+    imgNosotros.src = imagenesNosotros[0];
+}
     // Botón subir
     const btnSubir = document.getElementById('btn-subir');
     window.addEventListener('scroll', function() {

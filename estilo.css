@@ -167,7 +167,7 @@ nav.abierto a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3); /* Cambiado de 0.5 a 0.3 (30% de opacidad) */
     z-index: 1;
 }
 
@@ -583,10 +583,63 @@ nav.abierto a {
     flex: 1;
 }
 
-.nosotros-imagen img {
-    width: 100%;
+.nosotros-carrusel {
+    position: relative;
     border-radius: 20px;
+    overflow: hidden;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+#img-nosotros-carrusel {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.nosotros-carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nosotros-carrusel-btn:hover {
+    background: #E07A8C;
+}
+
+.nosotros-carrusel-btn.prev { left: 15px; }
+.nosotros-carrusel-btn.next { right: 15px; }
+
+.nosotros-carrusel-indice {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+    .nosotros-carrusel-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
 }
 
 /* ===== CONTACTO ===== */
@@ -791,6 +844,47 @@ footer {
     background: #C4455C;
     transform: scale(1.1);
 }
+/* ===== BOTÓN FLOTANTE WHATSAPP ===== */
+#btn-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.5);
+    z-index: 998;
+    transition: transform 0.3s, background 0.3s;
+    text-decoration: none;
+    animation: pulso-whatsapp 2.2s infinite;
+}
+
+#btn-whatsapp:hover {
+    background: #1EBE5A;
+    transform: scale(1.1);
+}
+
+@keyframes pulso-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+    70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+@media (max-width: 480px) {
+    #btn-whatsapp {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 20px;
+        left: 20px;
+    }
+}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
@@ -990,4 +1084,79 @@ footer {
 }
 .boton-whatsapp:hover {
     background: #128C7E;
+}
+/* ===== CARRUSEL DE PRODUCTOS EN HERO ===== */
+.hero-carrusel-contenedor {
+    position: absolute;
+    bottom: 150px;          /* Subido mucho más arriba que antes (era 80px) */
+    right: 0px;             /* Pegado al extremo derecho de la pantalla */
+    width: 280px;
+    height: 360px;
+    background: #ffffff;
+    border-radius: 20px 0 0 20px; /* Solo redondeado a la izquierda para que pegue */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    transform: rotate(-4deg);
+    transform-origin: right bottom; /* El giro se ancla a la esquina inferior derecha */
+}
+
+#img-hero-carrusel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: opacity 0.3s ease-in-out;
+    min-height: 300px; /* Fuerza un tamaño mínimo para que se vea */
+}
+
+#img-hero-carrusel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.carrusel-hero-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    flex-shrink: 0;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrusel-hero-btn:hover {
+    background: #E07A8C;
+}
+
+/* ===== RESPONSIVE (Oculta el carrusel en móviles para no estorbar) ===== */
+/* ===== RESPONSIVE (Oculta el carrusel en móviles para no estorbar) ===== */
+@media (max-width: 992px) {
+    .hero-carrusel-contenedor {
+        width: 200px;      /* Reduce el tamaño en tabletas */
+        height: 260px;
+        bottom: 60px;      /* Ajusta la altura */
+        right: 0px;
+        border-radius: 15px 0 0 15px;
+        transform: rotate(-3deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-carrusel-contenedor {
+        display: none; /* Se oculta en celulares */
+    }
 }
