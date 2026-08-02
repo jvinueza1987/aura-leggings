@@ -723,6 +723,13 @@ document.addEventListener('DOMContentLoaded', function() {
 const imgNosotros = document.getElementById('img-nosotros-carrusel');
 if (imgNosotros && imagenesNosotros.length > 0) {
     imgNosotros.src = imagenesNosotros[0];
+        // Cerrar el menú hamburguesa al hacer clic en cualquier enlace
+    const enlacesMenu = document.querySelectorAll('nav a');
+    enlacesMenu.forEach(enlace => {
+        enlace.addEventListener('click', function() {
+            nav.classList.remove('abierto');
+        });
+    });
 }
     // Botón subir
     const btnSubir = document.getElementById('btn-subir');

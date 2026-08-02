@@ -914,34 +914,34 @@ footer {
 }
 
 @media (max-width: 768px) {
-    header {
-        padding: 12px 20px;
+    header { padding: 12px 20px; }
+    nav a { display: none; }
+    .menu-toggle { display: block; }
+    .hero { background-attachment: scroll; min-height: 70vh; padding: 40px 20px 0; }
+    .hero-texto h1 { font-size: 2.8rem; }
+    #titulo-hero { white-space: normal; border-right: none; animation: none; }
+    .productos { grid-template-columns: 1fr 1fr; }
+    .carrito { width: 320px; right: -360px; }
+    
+    /* ===== AJUSTE PARA QUE EL CARRUSEL APAREZCA EN MÓVILES ===== */
+    .hero-carrusel-contenedor {
+        display: flex; /* Eliminado el display: none */
+        width: 140px;
+        height: 180px;
+        bottom: 100px; /* Un poco más arriba para no tapar el botón de WhatsApp */
+        right: 0px;
+        border-radius: 15px 0 0 15px;
+        padding: 5px;
+        transform: rotate(-2deg);
     }
-    nav a {
-        display: none;
+    .carrusel-hero-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
     }
-    .menu-toggle {
-        display: block;
-    }
-    .hero {
-        background-attachment: scroll;
-        min-height: 70vh;
-        padding: 40px 20px 0;
-    }
-    .hero-texto h1 {
-        font-size: 2.8rem;
-    }
-    #titulo-hero {
-        white-space: normal;
-        border-right: none;
-        animation: none;
-    }
-    .productos {
-        grid-template-columns: 1fr 1fr;
-    }
-    .carrito {
-        width: 320px;
-        right: -360px;
+    #img-hero-carrusel {
+        min-height: unset; /* Quitamos el tamaño mínimo forzado */
+        border-radius: 10px;
     }
 }
 
