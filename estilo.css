@@ -1119,15 +1119,15 @@ footer {
         right: -360px;
     }
 
-    /* Carrusel más grande para Móviles */
+    /* Carrusel más grande, sin espacio blanco y subido */
     .hero-carrusel-contenedor {
         display: flex !important;
-        width: 170px;          /* Aumentado de 110px a 170px */
-        height: 220px;         /* Aumentado de 140px a 220px */
-        bottom: 130px;         /* Ajustado para que no tape el botón de WhatsApp */
+        width: 220px;          /* Más ancho */
+        height: 280px;         /* Más alto */
+        bottom: 250px;         /* Subido para quedar justo debajo de la etiqueta */
         right: 0px;
         border-radius: 15px 0 0 15px;
-        padding: 8px;
+        padding: 0px !important; /* ¡Elimina el espacio blanco interno! */
         transform: rotate(-3deg);
         transform-origin: right bottom;
         box-shadow: 0 8px 20px rgba(0,0,0,0.5);
@@ -1135,20 +1135,22 @@ footer {
         z-index: 100 !important;
         align-items: center;
         justify-content: space-between;
+        overflow: hidden; /* Asegura que la imagen no se salga del recuadro */
     }
     
     .carrusel-hero-btn {
-        width: 24px;           /* Flechas un poco más grandes */
-        height: 24px;
-        font-size: 0.8rem;
+        width: 28px;           /* Flechas un poco más grandes */
+        height: 28px;
+        font-size: 0.9rem;
         background: rgba(0, 0, 0, 0.6);
         color: white;
         border: none;
-        border-radius: 50%;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 12;
+        margin: 0 5px; /* Pequeño margen para que no toquen la imagen */
     }
     
     #img-hero-carrusel {
@@ -1156,7 +1158,7 @@ footer {
         height: 100%;
         width: 100%;
         object-fit: cover;
-        border-radius: 8px;
+        border-radius: 15px 0 0 15px; /* Redondeado solo a la izquierda */
         transition: opacity 0.3s ease-in-out;
     }
 }

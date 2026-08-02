@@ -335,7 +335,7 @@ function renderizarTallas(tallas) {
         return '<div class="sin-tallas">Sin tallas disponibles</div>';
     }
     
-    const tallasOrdenadas = ['S', 'M', 'L', 'XL'];
+    const tallasOrdenadas = ['S', 'M', 'L'];
     let html = '<div class="tallas-container">';
     html += '<span class="tallas-label">📏 Tallas disponibles:</span>';
     html += '<div class="tallas-grid">';
@@ -462,8 +462,13 @@ function renderizarCategorias() {
         
         div.innerHTML = `
             <img src="${info.imagen}" alt="${cat.nombre}" 
-                 onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=${cat.nombre}'">
-            <h3>${cat.icono} ${cat.nombre}</h3>
+                 onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=${cat.nombre}'"
+                 onclick="${esProximamente ? '' : "mostrarCategoria('" + cat.id + "')"}" 
+                 style="${esProximamente ? '' : 'cursor: pointer;'}">
+            <h3 onclick="${esProximamente ? '' : "mostrarCategoria('" + cat.id + "')"}" 
+                style="${esProximamente ? '' : 'cursor: pointer;'}">
+                ${cat.icono} ${cat.nombre}
+            </h3>
             <p>${info.texto}</p>
             <button class="boton ${esProximamente ? 'proximamente-boton' : ''}" 
                     onclick="mostrarCategoria('${cat.id}')"
