@@ -74,11 +74,10 @@
                 </div>
             </div>
             
-            <!-- ===== CARRUSEL DE PRODUCTOS EN HERO (EXTREMO DERECHO) ===== -->
+            <!-- ===== CARRUSEL DE PRODUCTOS EN HERO ===== -->
             <div class="hero-carrusel-contenedor">
                 <button class="carrusel-hero-btn prev" onclick="cambiarImgHero(-1)">&#10094;</button>
                 <div class="carrusel-hero-slides">
-                    <!-- El onerror se activará si el formato del archivo no es válido -->
                     <img id="img-hero-carrusel" src="" alt="Productos Destacados" 
                          onerror="this.src='https://via.placeholder.com/280x360/E07A8C/FFFFFF?text=Error+Formato'">
                 </div>
@@ -147,21 +146,18 @@
         <div class="contenedor contacto">
             <h2 class="titulo-seccion">Contáctanos</h2>
             <div class="contacto-info">
-                <!-- Instagram (reemplaza al correo) -->
                 <div class="contacto-item">
                     <i class="fab fa-instagram"></i>
                     <a href="https://www.instagram.com/aura_leggingsec/" target="_blank" rel="noopener noreferrer">
                         @aura_leggingsec
                     </a>
                 </div>
-                <!-- WhatsApp -->
                 <div class="contacto-item">
                     <i class="fab fa-whatsapp"></i>
                     <a href="https://wa.me/593978660147" target="_blank">
                         +593 97 866 0147
                     </a>
                 </div>
-                <!-- Ubicación -->
                 <div class="contacto-item">
                     <i class="fas fa-map-pin"></i>
                     <span>Quito - Ecuador</span>
@@ -214,7 +210,7 @@
         </div>
     </footer>
 
-    <!-- ===== MODAL CARRUSEL (DENTRO DEL BODY) ===== -->
+    <!-- ===== MODAL CARRUSEL ===== -->
     <div id="modal-carrusel" class="modal-carrusel">
         <div class="modal-contenido">
             <span class="cerrar-modal" onclick="cerrarCarrusel()">&times;</span>

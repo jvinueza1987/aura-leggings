@@ -1,307 +1,74 @@
-// ===== CATÁLOGO DE PRODUCTOS =====
+// ===== CATÁLOGO DE PRODUCTOS (con imagenes_extra vacías, se completarán automáticamente) =====
 const productos = [
-    // ===== LEGGINGS =====
-{ 
-    id: 1, 
-    nombre: 'Legging Agua Marina', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/agua marina tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/agua marina tye dye/foto1.jpg',
-        'img/productos/leggings/agua marina tye dye/foto2.jpg',
-        'img/productos/leggings/agua marina tye dye/foto3.jpg',
-        'img/productos/leggings/agua marina tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 2, 
-    nombre: 'Legging Azul Eléctrico', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/azul electrico tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/azul electrico tye dye/foto1.jpg',
-        'img/productos/leggings/azul electrico tye dye/foto2.jpg',
-        'img/productos/leggings/azul electrico tye dye/foto3.jpg',
-        'img/productos/leggings/azul electrico tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 3, 
-    nombre: 'Legging Fucsia y Negro', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/fucsia y negra tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/fucsia y negra tye dye/foto1.jpg',
-        'img/productos/leggings/fucsia y negra tye dye/foto2.jpg',
-        'img/productos/leggings/fucsia y negra tye dye/foto3.jpg',
-        'img/productos/leggings/fucsia y negra tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 4, 
-    nombre: 'Legging Mocca', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/mocca tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/mocca tye dye/foto1.jpg',
-        'img/productos/leggings/mocca tye dye/foto2.jpg',
-        'img/productos/leggings/mocca tye dye/foto3.jpg',
-        'img/productos/leggings/mocca tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 5, 
-    nombre: 'Legging Negro', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/negro tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/negro tye dye/foto1.jpg',
-        'img/productos/leggings/negro tye dye/foto2.jpg',
-        'img/productos/leggings/negro tye dye/foto3.jpg',
-        'img/productos/leggings/negro tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 6, 
-    nombre: 'Legging Púrpura Degradado', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/purpura degradado/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/purpura degradado/foto1.jpg',
-        'img/productos/leggings/purpura degradado/foto2.jpg',
-        'img/productos/leggings/purpura degradado/foto3.jpg',
-        'img/productos/leggings/purpura degradado/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 7, 
-    nombre: 'Legging Rojo y Negro', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/rojo y negro tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/rojo y negro tye dye/foto1.jpg',
-        'img/productos/leggings/rojo y negro tye dye/foto2.jpg',
-        'img/productos/leggings/rojo y negro tye dye/foto3.jpg',
-        'img/productos/leggings/rojo y negro tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 8, 
-    nombre: 'Legging Rosa Fucsia', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/rosa fuscia tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/rosa fuscia tye dye/foto1.jpg',
-        'img/productos/leggings/rosa fuscia tye dye/foto2.jpg',
-        'img/productos/leggings/rosa fuscia tye dye/foto3.jpg',
-        'img/productos/leggings/rosa fuscia tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 9, 
-    nombre: 'Legging Rosa Pastel', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/rosa pastel tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/rosa pastel tye dye/foto1.jpg',
-        'img/productos/leggings/rosa pastel tye dye/foto2.jpg',
-        'img/productos/leggings/rosa pastel tye dye/foto3.jpg',
-        'img/productos/leggings/rosa pastel tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 10, 
-    nombre: 'Legging Verde Oliva', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/Verde oliva tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/Verde oliva tye dye/foto1.jpg',
-        'img/productos/leggings/Verde oliva tye dye/foto2.jpg',
-        'img/productos/leggings/Verde oliva tye dye/foto3.jpg',
-        'img/productos/leggings/Verde oliva tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 11, 
-    nombre: 'Legging Verde', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/Verde tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/Verde tye dye/foto1.jpg',
-        'img/productos/leggings/Verde tye dye/foto2.jpg',
-        'img/productos/leggings/Verde tye dye/foto3.jpg',
-        'img/productos/leggings/Verde tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
-{ 
-    id: 12, 
-    nombre: 'Legging Violeta', 
-    categoria: 'leggings', 
-    precio: 15.00, 
-    imagen: 'img/productos/leggings/Violeta tye dye/portada.jpg',
-    imagenes_extra: [
-        'img/productos/leggings/Violeta tye dye/foto1.jpg',
-        'img/productos/leggings/Violeta tye dye/foto2.jpg',
-        'img/productos/leggings/Violeta tye dye/foto3.jpg',
-        'img/productos/leggings/Violeta tye dye/foto4.jpg'
-    ],
-    tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-},
+    // ===== LEGGINGS TYE DYE (12) =====
+    { id: 1, nombre: 'Legging Agua Marina', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/agua marina tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 2, nombre: 'Legging Azul Eléctrico', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/azul electrico tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 3, nombre: 'Legging Fucsia y Negro', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/fucsia y negra tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 4, nombre: 'Legging Mocca', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/mocca tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 5, nombre: 'Legging Negro', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/negro tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 6, nombre: 'Legging Púrpura Degradado', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/purpura degradado/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 7, nombre: 'Legging Rojo y Negro', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/rojo y negro tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 8, nombre: 'Legging Rosa Fucsia', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/rosa fuscia tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 9, nombre: 'Legging Rosa Pastel', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/rosa pastel tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 10, nombre: 'Legging Verde Oliva', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/Verde oliva tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 11, nombre: 'Legging Verde', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/Verde tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 12, nombre: 'Legging Violeta', categoria: 'leggings', precio: 15.00, imagen: 'img/productos/leggings/Violeta tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
 
-    // ===== PRÓXIMAMENTE =====
-    { 
-        id: 101, 
-        nombre: 'Enterizos (Próximamente)', 
-        categoria: 'enterizos', 
-        precio: 0, 
-        imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Próximamente',
-        tallas: {}
-    },
-    { 
-        id: 102, 
-        nombre: 'Conjuntos (Próximamente)', 
-        categoria: 'conjuntos', 
-        precio: 0, 
-        imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Próximamente',
-        tallas: {}
-    },
-    
-    // ===== SHORTS =====
-    {
-        id: 201,
-        nombre: 'Short Azul',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/azul/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/azul/foto1.jpg',
-            'img/productos/shorts/azul/foto2.jpg',
-            'img/productos/shorts/azul/foto3.jpg',
-            'img/productos/shorts/azul/foto4.jpg'
-        ],
-        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-    },
-    {
-        id: 202,
-        nombre: 'Short Gris Tie Dye',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/gris tye dye/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/gris tye dye/foto1.jpg',
-            'img/productos/shorts/gris tye dye/foto2.jpg',
-            'img/productos/shorts/gris tye dye/foto3.jpg',
-            'img/productos/shorts/gris tye dye/foto4.jpg'
-        ],
-        tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 }
-    },
-    {
-        id: 203,
-        nombre: 'Short Negro Tie Dye',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/negro tye dye/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/negro tye dye/foto1.jpg',
-            'img/productos/shorts/negro tye dye/foto2.jpg',
-            'img/productos/shorts/negro tye dye/foto3.jpg',
-            'img/productos/shorts/negro tye dye/foto4.jpg'
-        ],
-        tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 }
-    },
-    {
-        id: 204,
-        nombre: 'Short Rosa',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/rosa/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/rosa/foto1.jpg',
-            'img/productos/shorts/rosa/foto2.jpg',
-            'img/productos/shorts/rosa/foto3.jpg',
-            'img/productos/shorts/rosa/foto4.jpg'
-        ],
-        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-    },
-    {
-        id: 205,
-        nombre: 'Short Rosa Pastel Tie Dye',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/rosa pastel tye dye/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/rosa pastel tye dye/foto1.jpg',
-            'img/productos/shorts/rosa pastel tye dye/foto2.jpg',
-            'img/productos/shorts/rosa pastel tye dye/foto3.jpg',
-            'img/productos/shorts/rosa pastel tye dye/foto4.jpg'
-        ],
-        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-    },
-    {
-        id: 206,
-        nombre: 'Short Verde Salvia Tie Dye',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/verde salvia tye dye/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/verde salvia tye dye/foto1.jpg',
-            'img/productos/shorts/verde salvia tye dye/foto2.jpg',
-            'img/productos/shorts/verde salvia tye dye/foto3.jpg',
-            'img/productos/shorts/verde salvia tye dye/foto4.jpg'
-        ],
-        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-    },
-    {
-        id: 207,
-        nombre: 'Short Verde Tie Dye',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/verde tye dye/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/verde tye dye/foto1.jpg',
-            'img/productos/shorts/verde tye dye/foto2.jpg',
-            'img/productos/shorts/verde tye dye/foto3.jpg',
-            'img/productos/shorts/verde tye dye/foto4.jpg'
-        ],
-        tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 }
-    },
-    {
-        id: 208,
-        nombre: 'Short Mocca Tie Dye',
-        categoria: 'shorts',
-        precio: 10.00,
-        imagen: 'img/productos/shorts/mocca tye dye/portada.jpg',
-        imagenes_extra: [
-            'img/productos/shorts/mocca tye dye/foto1.jpg',
-            'img/productos/shorts/mocca tye dye/foto2.jpg',
-            'img/productos/shorts/mocca tye dye/foto3.jpg',
-            'img/productos/shorts/mocca tye dye/foto4.jpg'
-        ],
-        tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 }
-    }
+    // ===== LEGGINGS NUEVOS (3) =====
+    { id: 13, nombre: 'Dfyne Azul Marín Vintage', categoria: 'leggings', precio: 25.00, imagen: 'img/productos/leggings/dfyne azul marin vintage/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 14, nombre: 'Dfyne Rojo Vintage', categoria: 'leggings', precio: 25.00, imagen: 'img/productos/leggings/dfyne rojo vintage/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 15, nombre: 'Tipo Vintage Marrón', categoria: 'leggings', precio: 20.00, imagen: 'img/productos/leggings/tipo vintage marron/portada.jpg', imagenes_extra: [], tallas: { 'S': 0, 'M': 1, 'L': 0, 'XL': 0 } },
+
+    // ===== CONJUNTOS (2) =====
+    { id: 16, nombre: 'Top y Legging Animal Print', categoria: 'conjuntos', precio: 18.00, imagen: 'img/productos/conjuntos/top y legging animal print/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 17, nombre: 'Top y Short Azul Borde Blanco', categoria: 'conjuntos', precio: 18.00, imagen: 'img/productos/conjuntos/top y short azul borde blanco/portada.jpg', imagenes_extra: [], tallas: { 'S': 0, 'M': 1, 'L': 0, 'XL': 0 } },
+
+    // ===== ENTERIZOS (18) =====
+    { id: 18, nombre: 'Jumpsuit Animal Print Azul', categoria: 'enterizos', precio: 18.00, imagen: 'img/productos/enterizos/jumpsuit animal print azul/portada.jpg', imagenes_extra: [], tallas: { 'S': 0, 'M': 1, 'L': 0, 'XL': 0 } },
+    { id: 19, nombre: 'Jumpsuit Animal Print Blanco Vintage', categoria: 'enterizos', precio: 25.00, imagen: 'img/productos/enterizos/jumpsuit animal print blanco vintage/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 20, nombre: 'Jumpsuit Animal Print Marrón Vintage', categoria: 'enterizos', precio: 22.00, imagen: 'img/productos/enterizos/jumpsuit animal print marron vintage/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 21, nombre: 'Jumpsuit Azul Cielo Manga Larga', categoria: 'enterizos', precio: 25.00, imagen: 'img/productos/enterizos/jumpsuit azul cielo manga larga/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 22, nombre: 'Jumpsuit Corto Café Acanalado', categoria: 'enterizos', precio: 15.00, imagen: 'img/productos/enterizos/jumpsuit corto cafe acanalado/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 23, nombre: 'Jumpsuit Corto Negro Costuras en Relieve', categoria: 'enterizos', precio: 22.00, imagen: 'img/productos/enterizos/jumpsuit corto negro costuras en relieve/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 24, nombre: 'Jumpsuit Corto Negro Espalda Descubierta', categoria: 'enterizos', precio: 17.00, imagen: 'img/productos/enterizos/jumpsuit corto negro espalda descubierta/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 25, nombre: 'Jumpsuit Corto Pink', categoria: 'enterizos', precio: 17.00, imagen: 'img/productos/enterizos/jumpsuit corto pink/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 26, nombre: 'Jumpsuit Corto Plomo', categoria: 'enterizos', precio: 25.00, imagen: 'img/productos/enterizos/jumpsuit corto plomo/portada.jpg', imagenes_extra: [], tallas: { 'S': 0, 'M': 1, 'L': 0, 'XL': 0 } },
+    { id: 27, nombre: 'Jumpsuit Corto Rosa Espalda Descubierta Costuras en Relieve', categoria: 'enterizos', precio: 17.00, imagen: 'img/productos/enterizos/jumpsuit corto rosa espalda descubierta costuras en relieve/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 28, nombre: 'Jumpsuit Negro Espalda Descubierta Manga Corta', categoria: 'enterizos', precio: 18.00, imagen: 'img/productos/enterizos/jumpsuit negro espalda descubierta manga corta/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 29, nombre: 'Jumpsuit Negro Estilo Ruso Manga Corta', categoria: 'enterizos', precio: 17.00, imagen: 'img/productos/enterizos/jumpsuit negro estilo ruso manga corta/portada.jpg', imagenes_extra: [], tallas: { 'S': 0, 'M': 1, 'L': 0, 'XL': 0 } },
+    { id: 30, nombre: 'Jumpsuit Negro Sin Mangas Sencillo', categoria: 'enterizos', precio: 15.00, imagen: 'img/productos/enterizos/jumpsuit negro sin mangas sencillo/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 31, nombre: 'Jumpsuit Plomo Costuras en Relieve', categoria: 'enterizos', precio: 25.00, imagen: 'img/productos/enterizos/jumpsuit plomo costuras en relieve/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 32, nombre: 'Jumpsuit Rojo Manga Larga', categoria: 'enterizos', precio: 17.00, imagen: 'img/productos/enterizos/jumpsuit rojo manga larga/portada.jpg', imagenes_extra: [], tallas: { 'S': 0, 'M': 1, 'L': 0, 'XL': 0 } },
+    { id: 33, nombre: 'Jumpsuit Rosa Barbie Vintage', categoria: 'enterizos', precio: 22.00, imagen: 'img/productos/enterizos/jumpsuit rosa barbie vintage/portada.jpg', imagenes_extra: [], tallas: { 'S': 0, 'M': 1, 'L': 0, 'XL': 0 } },
+    { id: 34, nombre: 'Jumpsuit Sugar Pink', categoria: 'enterizos', precio: 20.00, imagen: 'img/productos/enterizos/jumpsuit sugar pink/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+
+    // ===== SHORTS (8) =====
+    { id: 201, nombre: 'Short Azul', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/azul/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 202, nombre: 'Short Gris Tie Dye', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/gris tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 203, nombre: 'Short Negro Tie Dye', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/negro tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 204, nombre: 'Short Rosa', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/rosa/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 205, nombre: 'Short Rosa Pastel Tie Dye', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/rosa pastel tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 206, nombre: 'Short Verde Salvia Tie Dye', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/verde salvia tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 207, nombre: 'Short Verde Tie Dye', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/verde tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 2, 'M': 0, 'L': 0, 'XL': 0 } },
+    { id: 208, nombre: 'Short Mocca Tie Dye', categoria: 'shorts', precio: 10.00, imagen: 'img/productos/shorts/mocca tye dye/portada.jpg', imagenes_extra: [], tallas: { 'S': 1, 'M': 0, 'L': 0, 'XL': 0 } }
 ];
+
+// ===== FUNCIÓN PARA COMPLETAR IMÁGENES EXTRA AUTOMÁTICAMENTE =====
+function completarImagenesExtra() {
+    productos.forEach(p => {
+        // Si ya tiene imágenes extra, no las sobrescribimos
+        if (p.imagenes_extra && p.imagenes_extra.length > 0) return;
+        
+        // Generar rutas a partir de la imagen principal
+        const basePath = p.imagen.replace(/portada\.(jpg|jpeg|png|webp)$/i, '');
+        p.imagenes_extra = [
+            `${basePath}foto1.jpg`,
+            `${basePath}foto2.jpg`,
+            `${basePath}foto3.jpg`,
+            `${basePath}foto4.jpg`
+        ];
+    });
+}
 
 // ===== ESTADO DEL CARRITO =====
 let carrito = [];
@@ -362,10 +129,10 @@ function mostrarCategoria(categoria) {
     mostrarSeccion('seccion-galeria');
     
     const titulos = {
-        'leggings': '👖 Leggings Tye Dye',
-        'enterizos': '👗 Enterizos (Próximamente)',
-        'conjuntos': '👚 Conjuntos (Próximamente)',
-        'shorts': '🩳 Shorts'
+        'leggings': 'Leggings',
+        'conjuntos': 'Conjuntos',
+        'enterizos': 'Enterizos',
+        'shorts': 'Shorts'
     };
     
     document.getElementById('titulo-galeria').textContent = titulos[categoria] || categoria;
@@ -391,10 +158,7 @@ function mostrarCategoria(categoria) {
         
         // Construir array completo de imágenes (portada + extras)
         const todasImagenes = [p.imagen, ...(p.imagenes_extra || [])];
-        
-        // === CAMBIO CLAVE: Convertir el array en una cadena unida por "||" ===
         const imagenesStr = todasImagenes.join('||');
-        
         const tallasHTML = renderizarTallas(p.tallas);
         const badgeHTML = p.precio === 0 ? 
             '<span class="badge proximamente">🔜 Próximamente</span>' : '';
@@ -422,16 +186,16 @@ function mostrarCategoria(categoria) {
     });
 }
 
-// ===== RENDERIZAR CATEGORÍAS =====
+// ===== RENDERIZAR CATEGORÍAS (SIN ICONOS) =====
 function renderizarCategorias() {
     const contenedor = document.getElementById('lista-categorias');
     contenedor.innerHTML = '';
     
     const categorias = [
-        { id: 'leggings', nombre: 'Leggings', icono: '👖' },
-        { id: 'enterizos', nombre: 'Enterizos', icono: '👗' },
-        { id: 'conjuntos', nombre: 'Conjuntos', icono: '👚' },
-        { id: 'shorts', nombre: 'Shorts', icono: '🩳' }
+        { id: 'leggings', nombre: 'Leggings' },
+        { id: 'enterizos', nombre: 'Enterizos' },
+        { id: 'conjuntos', nombre: 'Conjuntos' },
+        { id: 'shorts', nombre: 'Shorts' }
     ];
     
     const infoCategoria = {
@@ -439,13 +203,13 @@ function renderizarCategorias() {
             imagen: 'img/productos/leggings/negro tye dye/portada.jpg',
             texto: `${productos.filter(p => p.categoria === 'leggings' && p.precio > 0).length} modelos disponibles`
         },
-        enterizos: { 
-            imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Enterizos',
-            texto: 'Próximamente'
-        },
         conjuntos: { 
-            imagen: 'https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Conjuntos',
-            texto: 'Próximamente'
+            imagen: 'img/productos/conjuntos/top y legging animal print/portada.jpg',
+            texto: `${productos.filter(p => p.categoria === 'conjuntos' && p.precio > 0).length} modelos disponibles`
+        },
+        enterizos: { 
+            imagen: 'img/productos/enterizos/jumpsuit sugar pink/portada.jpg',
+            texto: `${productos.filter(p => p.categoria === 'enterizos' && p.precio > 0).length} modelos disponibles`
         },
         shorts: { 
             imagen: 'img/productos/shorts/azul/portada.jpg',
@@ -453,29 +217,26 @@ function renderizarCategorias() {
         }
     };
     
-    const categoriasActivas = ['leggings', 'shorts'];
-
     categorias.forEach(cat => {
         const info = infoCategoria[cat.id];
         const div = document.createElement('div');
         div.className = 'producto';
         
-        const esProximamente = !categoriasActivas.includes(cat.id);
+        const tieneProductos = productos.some(p => p.categoria === cat.id && p.precio > 0);
+        
+        const onclickAttr = tieneProductos ? `onclick="mostrarCategoria('${cat.id}')" style="cursor:pointer;"` : '';
+        const disabledAttr = !tieneProductos ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : '';
         
         div.innerHTML = `
             <img src="${info.imagen}" alt="${cat.nombre}" 
                  onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=${cat.nombre}'"
-                 onclick="${esProximamente ? '' : "mostrarCategoria('" + cat.id + "')"}" 
-                 style="${esProximamente ? '' : 'cursor: pointer;'}">
-            <h3 onclick="${esProximamente ? '' : "mostrarCategoria('" + cat.id + "')"}" 
-                style="${esProximamente ? '' : 'cursor: pointer;'}">
-                ${cat.icono} ${cat.nombre}
-            </h3>
+                 ${onclickAttr}>
+            <h3 ${onclickAttr}>${cat.nombre}</h3>
             <p>${info.texto}</p>
-            <button class="boton ${esProximamente ? 'proximamente-boton' : ''}" 
+            <button class="boton" 
                     onclick="mostrarCategoria('${cat.id}')"
-                    ${esProximamente ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : ''}>
-                ${esProximamente ? '🔜 Próximamente' : 'Ver modelos'}
+                    ${disabledAttr}>
+                ${tieneProductos ? 'Ver modelos' : '🔜 Próximamente'}
             </button>
         `;
         contenedor.appendChild(div);
@@ -487,11 +248,9 @@ let imagenesCarrusel = [];
 let indiceActual = 0;
 
 function abrirCarrusel(imagenes) {
-    // Si por alguna razón nos llegara un string sin dividir, lo dividimos
     if (typeof imagenes === 'string') {
         imagenes = imagenes.split('||');
     }
-    
     if (!imagenes || imagenes.length === 0) return;
     
     imagenesCarrusel = imagenes;
@@ -517,20 +276,14 @@ function cambiarImagen(direccion) {
     if (!imagenesCarrusel || imagenesCarrusel.length === 0) return;
     
     indiceActual += direccion;
-    
-    if (indiceActual < 0) {
-        indiceActual = imagenesCarrusel.length - 1;
-    } else if (indiceActual >= imagenesCarrusel.length) {
-        indiceActual = 0;
-    }
+    if (indiceActual < 0) indiceActual = imagenesCarrusel.length - 1;
+    else if (indiceActual >= imagenesCarrusel.length) indiceActual = 0;
     
     const imagen = document.getElementById('carrusel-imagen');
     const indice = document.getElementById('carrusel-indice');
-    
     imagen.src = imagenesCarrusel[indiceActual];
     indice.textContent = `${indiceActual + 1} / ${imagenesCarrusel.length}`;
 }
-
 
 // ===== CARRITO =====
 function cargarCarrito() {
@@ -668,15 +421,12 @@ let indiceHero = 0;
 
 function cambiarImgHero(direccion) {
     indiceHero += direccion;
-    if (indiceHero < 0) {
-        indiceHero = imagenesHero.length - 1;
-    } else if (indiceHero >= imagenesHero.length) {
-        indiceHero = 0;
-    }
+    if (indiceHero < 0) indiceHero = imagenesHero.length - 1;
+    else if (indiceHero >= imagenesHero.length) indiceHero = 0;
     
     const imgElement = document.getElementById('img-hero-carrusel');
     if (imgElement) {
-        imgElement.style.opacity = '0.5'; // Efecto de desvanecimiento
+        imgElement.style.opacity = '0.5';
         setTimeout(() => {
             imgElement.src = imagenesHero[indiceHero];
             imgElement.style.opacity = '1';
@@ -698,17 +448,12 @@ let indiceNosotros = 0;
 
 function cambiarImgNosotros(direccion) {
     if (!imagenesNosotros || imagenesNosotros.length === 0) return;
-
     indiceNosotros += direccion;
-    if (indiceNosotros < 0) {
-        indiceNosotros = imagenesNosotros.length - 1;
-    } else if (indiceNosotros >= imagenesNosotros.length) {
-        indiceNosotros = 0;
-    }
+    if (indiceNosotros < 0) indiceNosotros = imagenesNosotros.length - 1;
+    else if (indiceNosotros >= imagenesNosotros.length) indiceNosotros = 0;
 
     const imgElement = document.getElementById('img-nosotros-carrusel');
     const indiceEl = document.getElementById('nosotros-carrusel-indice');
-
     if (imgElement) {
         imgElement.style.opacity = '0.4';
         setTimeout(() => {
@@ -723,10 +468,13 @@ function cambiarImgNosotros(direccion) {
 
 // ===== INICIALIZAR =====
 document.addEventListener('DOMContentLoaded', function() {
+    // Completar imágenes extra automáticamente antes de cualquier renderizado
+    completarImagenesExtra();
+    
     cargarCarrito();
     mostrarInicio();
 
-    // ===== MENÚ HAMBURGUESA =====
+    // Menú hamburguesa
     const toggle = document.getElementById('menu-toggle');
     const nav = document.querySelector('nav');
     if (toggle) {
@@ -735,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== CERRAR MENÚ AL HACER CLIC EN UN ENLACE =====
+    // Cerrar menú al hacer clic en un enlace
     const enlacesMenu = document.querySelectorAll('nav a');
     enlacesMenu.forEach(enlace => {
         enlace.addEventListener('click', function() {
@@ -743,19 +491,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== INICIALIZAR CARRUSEL DEL HERO =====
+    // Inicializar carrusel hero
     const imgHero = document.getElementById('img-hero-carrusel');
     if (imgHero && imagenesHero.length > 0) {
         imgHero.src = imagenesHero[0];
     }
 
-    // ===== INICIALIZAR CARRUSEL DE NOSOTROS =====
+    // Inicializar carrusel nosotros
     const imgNosotros = document.getElementById('img-nosotros-carrusel');
     if (imgNosotros && imagenesNosotros.length > 0) {
         imgNosotros.src = imagenesNosotros[0];
+        const indiceEl = document.getElementById('nosotros-carrusel-indice');
+        if (indiceEl) indiceEl.textContent = `1 / ${imagenesNosotros.length}`;
     }
 
-    // ===== BOTÓN SUBIR =====
+    // Botón subir
     const btnSubir = document.getElementById('btn-subir');
     window.addEventListener('scroll', function() {
         if (window.scrollY > 300) {
@@ -765,23 +515,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ===== CERRAR CARRUSEL CON TECLAS =====
+    // Teclas para carrusel
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            cerrarCarrusel();
-        }
-        if (e.key === 'ArrowLeft') {
-            cambiarImagen(-1);
-        }
-        if (e.key === 'ArrowRight') {
-            cambiarImagen(1);
-        }
+        if (e.key === 'Escape') cerrarCarrusel();
+        if (e.key === 'ArrowLeft') cambiarImagen(-1);
+        if (e.key === 'ArrowRight') cambiarImagen(1);
     });
 
-    // ===== CERRAR CARRUSEL AL HACER CLIC FUERA =====
+    // Cerrar carrusel al hacer clic fuera
     document.getElementById('modal-carrusel').addEventListener('click', function(e) {
-        if (e.target === this) {
-            cerrarCarrusel();
-        }
+        if (e.target === this) cerrarCarrusel();
     });
 });
