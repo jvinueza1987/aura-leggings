@@ -526,32 +526,28 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modal-carrusel').addEventListener('click', function(e) {
         if (e.target === this) cerrarCarrusel();
     });
-});async function descargarCatalogoPDF() {
+}async function descargarCatalogoPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     
-    const logo = new Image();
-    logo.src = 'img/logo.jpg'; // Cambia esto por la ruta de tu logo si tienes uno
-    
-    doc.setFontSize(22);
-    doc.text("Catálogo Aura Leggings", 105, 20, { align: "center" });
-    doc.setFontSize(10);
-    doc.text("Actualizado: " + new Date().toLocaleDateString(), 105, 28, { align: "center" });
+    // AQUÍ ELIGES QUÉ PARTE DE TU WEB QUERES CONVERTIR A PDF
+    // 'seccion-tienda' mostrará las categorías redondas.
+    // 'seccion-galeria' mostrará los productos filtrados.
+    const elemento = document.getElementById('seccion-tienda'); // Cambia esto a 'seccion-galeria' si quieres los productos específicos.
 
-    // Crear la tabla con los productos
-    const datosTabla = productos
-        .filter(p => p.precio > 0) // Filtrar los que no están en preventa
-        .map(p => [p.nombre, "$" + p.precio.toFixed(2), Object.keys(p.tallas).join(', ')]);
-
-    doc.autoTable({
-        head: [['Prenda', 'Precio', 'Tallas Disponibles']],
-        body: datosTabla,
-        startY: 35,
-        theme: 'grid',
-        headStyles: { fillColor: [224, 122, 140] }, // El color rosa de tu marca
-        styles: { fontSize: 10 },
-        columnStyles: { 0: { cellWidth: 70 }, 1: { cellWidth: 30 }, 2: { cellWidth: 40 } }
+    // Toma una "foto" del HTML seleccionado
+    const canvas = await html2canvas(elemento, {
+        scale: 2, // Alta calidad
+        useCORS: true // Permite cargar imágenes externas
     });
-
+    
+    const imgData = canvas.toDataURL('image/png');
+    
+    // Ajusta la imagen al tamaño del PDF (A4)
+    const imgProps = doc.getImageProperties(imgData);
+    const pdfWidth = doc.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    
+    doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
     doc.save("Catalogo_Aura_Leggings.pdf");
 }
