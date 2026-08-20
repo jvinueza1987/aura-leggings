@@ -1270,3 +1270,35 @@ footer {
         font-size: 2rem;
     }
 }
+@media print {
+    /* Oculta todo lo que no es el catálogo (menú, carrito, botones, footer, hero) */
+    header, footer, .hero, .features, .reseñas, .boton, .icono-carrito, #btn-whatsapp, #btn-subir, .menu-toggle, .seccion:not(.activa) { display: none !important; }
+    
+    /* Asegura que la tienda o la galería se muestren */
+    #seccion-tienda, #seccion-galeria { display: block !important; opacity: 1 !important; visibility: visible !important; }
+    
+    /* Oculta el botón de "Agregar al carrito" y "Ver modelos" */
+    .producto .boton, .producto-galeria .boton { display: none !important; }
+    
+    /* Ajusta el tamaño de las imágenes y la cuadrícula para que quepan 2 o 3 por página */
+    .productos, #lista-galeria { 
+        grid-template-columns: 1fr 1fr !important; 
+        gap: 15px !important; 
+        padding: 0 !important;
+    }
+    
+    /* Evita que las tarjetas de productos se corten a la mitad entre páginas */
+    .producto, .producto-galeria { 
+        page-break-inside: avoid !important; 
+        box-shadow: none !important; 
+        border: 1px solid #eee !important; 
+        padding: 10px !important;
+    }
+    
+    /* Asegura que las imágenes se impriman a color */
+    img { 
+        -webkit-print-color-adjust: exact !important; 
+        print-color-adjust: exact !important; 
+        filter: none !important;
+    }
+}
