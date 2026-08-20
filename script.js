@@ -526,4 +526,32 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modal-carrusel').addEventListener('click', function(e) {
         if (e.target === this) cerrarCarrusel();
     });
-});
+});async function descargarCatalogoPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    const logo = new Image();
+    logo.src = 'img/logo.jpg'; // Cambia esto por la ruta de tu logo si tienes uno
+    
+    doc.setFontSize(22);
+    doc.text("Catálogo Aura Leggings", 105, 20, { align: "center" });
+    doc.setFontSize(10);
+    doc.text("Actualizado: " + new Date().toLocaleDateString(), 105, 28, { align: "center" });
+
+    // Crear la tabla con los productos
+    const datosTabla = productos
+        .filter(p => p.precio > 0) // Filtrar los que no están en preventa
+        .map(p => [p.nombre, "$" + p.precio.toFixed(2), Object.keys(p.tallas).join(', ')]);
+
+    doc.autoTable({
+        head: [['Prenda', 'Precio', 'Tallas Disponibles']],
+        body: datosTabla,
+        startY: 35,
+        theme: 'grid',
+        headStyles: { fillColor: [224, 122, 140] }, // El color rosa de tu marca
+        styles: { fontSize: 10 },
+        columnStyles: { 0: { cellWidth: 70 }, 1: { cellWidth: 30 }, 2: { cellWidth: 40 } }
+    });
+
+    doc.save("Catalogo_Aura_Leggings.pdf");
+}
