@@ -1270,3 +1270,55 @@ footer {
         font-size: 2rem;
     }
 }
+/* ===== ESTILOS PARA PDF/IMPRESIÓN ===== */
+@media print {
+    /* Ocultar menús, pies de página y botones */
+    header, footer, .hero, .hero-carrusel-contenedor, #btn-whatsapp, #btn-subir, .icono-carrito, .menu-toggle, .volver, #footer-impresion {
+        display: none !important;
+    }
+    
+    /* Quitar sombras y bordes a las tarjetas */
+    .producto-galeria {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        box-shadow: none !important;
+        border: 1px solid #eee !important;
+        border-radius: 8px !important;
+        padding: 10px !important;
+        margin-bottom: 15px !important;
+        background: white !important;
+    }
+    
+    /* Poner 2 productos por fila */
+    #lista-galeria { 
+        display: grid !important; 
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 15px !important; 
+        padding: 0 !important;
+        /* Dejar espacio abajo para el pie de página fijo */
+        margin-bottom: 80px !important; 
+    }
+    
+    /* FORZAR COLORES REALES */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    /* ===== EL PIE DE PÁGINA DEL PDF ===== */
+    #footer-impresion {
+        display: block !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: #FFFFFF !important;
+        border-top: 2px solid #E07A8C !important; /* Un toque de tu color rosa */
+        padding: 10px !important;
+        text-align: center !important;
+        font-size: 0.8rem !important;
+        color: #2D2D2D !important;
+        z-index: 9999 !important;
+        box-sizing: border-box !important;
+    }
+}

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aura Leggings · Ropa Deportiva</title>
@@ -85,7 +85,6 @@
                 </div>
                 <button class="carrusel-hero-btn next" onclick="cambiarImgHero(1)">&#10095;</button>
             </div>
-            <!-- ========================================================== -->
         </div>
     </section>
 
@@ -95,12 +94,9 @@
             <h2 class="titulo-seccion">Nuestras Categorías</h2>
             <p class="subtitulo-seccion">Encuentra el look perfecto para cada entrenamiento</p>
             <div class="productos" id="lista-categorias"></div>
-            
-            <!-- AQUÍ DEBE ESTAR TU BOTÓN -->
-            <button class="boton primario" onclick="descargarCatalogoPDF()" style="margin: 20px auto; display: block;">
-                <i class="fas fa-file-pdf"></i> Descargar Catálogo PDF
-            </button>
-            
+<button class="boton primario" onclick="imprimirCatalogoCompleto()" style="margin: 20px auto; display: block;">
+    <i class="fas fa-print"></i> Descargar Catálogo PDF
+</button>
         </div>
     </section>
 
@@ -235,22 +231,4 @@
 
     <script src="script.js"></script>
 </body>
-    <!-- === TIENDA === -->
-    <section id="seccion-tienda" class="seccion">
-        <div class="contenedor">
-            <h2 class="titulo-seccion">Nuestras Categorías</h2>
-            <p class="subtitulo-seccion">Encuentra el look perfecto para cada entrenamiento</p>
-            <div class="productos" id="lista-categorias"></div>
-            
-            <!-- ===== AQUÍ PEGA EL BOTÓN ===== -->
-            <button class="boton primario" onclick="descargarCatalogoPDF()" style="margin: 20px auto; display: block;">
-                <i class="fas fa-file-pdf"></i> Descargar Catálogo PDF
-            </button>
-            <!-- ============================== -->
-            
-        </div>
-    </section>
 </html>
-<button class="boton primario" onclick="descargarCatalogoPDF()" style="margin: 20px auto; display: block;">
-    <i class="fas fa-file-pdf"></i> Descargar Catálogo PDF
-</button>

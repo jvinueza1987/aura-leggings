@@ -56,10 +56,7 @@ const productos = [
 // ===== FUNCIÓN PARA COMPLETAR IMÁGENES EXTRA AUTOMÁTICAMENTE =====
 function completarImagenesExtra() {
     productos.forEach(p => {
-        // Si ya tiene imágenes extra, no las sobrescribimos
         if (p.imagenes_extra && p.imagenes_extra.length > 0) return;
-        
-        // Generar rutas a partir de la imagen principal
         const basePath = p.imagen.replace(/portada\.(jpg|jpeg|png|webp)$/i, '');
         p.imagenes_extra = [
             `${basePath}foto1.jpg`,
@@ -79,47 +76,27 @@ function mostrarSeccion(id) {
     document.getElementById(id).classList.add('activa');
 }
 
-function mostrarInicio() {
-    mostrarSeccion('seccion-inicio');
-}
-
-function mostrarTienda() {
-    mostrarSeccion('seccion-tienda');
-    renderizarCategorias();
-}
-
-function mostrarNosotros() {
-    mostrarSeccion('seccion-nosotros');
-}
-
-function mostrarContacto() {
-    mostrarSeccion('seccion-contacto');
-}
+function mostrarInicio() { mostrarSeccion('seccion-inicio'); }
+function mostrarTienda() { mostrarSeccion('seccion-tienda'); renderizarCategorias(); }
+function mostrarNosotros() { mostrarSeccion('seccion-nosotros'); }
+function mostrarContacto() { mostrarSeccion('seccion-contacto'); }
 
 // ===== RENDERIZAR TALLAS Y EXISTENCIAS =====
 function renderizarTallas(tallas) {
     if (!tallas || Object.keys(tallas).length === 0) {
         return '<div class="sin-tallas">Sin tallas disponibles</div>';
     }
-    
     const tallasOrdenadas = ['S', 'M', 'L'];
     let html = '<div class="tallas-container">';
     html += '<span class="tallas-label">📏 Tallas disponibles:</span>';
     html += '<div class="tallas-grid">';
-    
     tallasOrdenadas.forEach(talla => {
         const cantidad = tallas[talla] || 0;
         const disponible = cantidad > 0;
         const clase = disponible ? 'talla-disponible' : 'talla-agotada';
         const texto = disponible ? `${talla} (${cantidad})` : `${talla} (agotado)`;
-        
-        html += `
-            <span class="talla-badge ${clase}">
-                ${texto}
-            </span>
-        `;
+        html += `<span class="talla-badge ${clase}">${texto}</span>`;
     });
-    
     html += '</div></div>';
     return html;
 }
@@ -127,117 +104,57 @@ function renderizarTallas(tallas) {
 // ===== MOSTRAR CATEGORÍA =====
 function mostrarCategoria(categoria) {
     mostrarSeccion('seccion-galeria');
-    
-    const titulos = {
-        'leggings': 'Leggings',
-        'conjuntos': 'Conjuntos',
-        'enterizos': 'Enterizos',
-        'shorts': 'Shorts'
-    };
-    
+    const titulos = { 'leggings': 'Leggings', 'conjuntos': 'Conjuntos', 'enterizos': 'Enterizos', 'shorts': 'Shorts' };
     document.getElementById('titulo-galeria').textContent = titulos[categoria] || categoria;
-    
     const filtrados = productos.filter(p => p.categoria === categoria);
     const contenedor = document.getElementById('lista-galeria');
     contenedor.innerHTML = '';
-    
     if (filtrados.length === 0) {
-        contenedor.innerHTML = `
-            <div class="sin-productos">
-                <i class="fas fa-box-open" style="font-size: 3rem; color: #E07A8C; margin-bottom: 15px;"></i>
-                <p>No hay productos en esta categoría aún.</p>
-                <p style="font-size: 0.9rem; color: #999;">Estamos preparando nuevos modelos para ti.</p>
-            </div>
-        `;
+        contenedor.innerHTML = `<div class="sin-productos"><i class="fas fa-box-open" style="font-size: 3rem; color: #E07A8C; margin-bottom: 15px;"></i><p>No hay productos en esta categoría aún.</p><p style="font-size: 0.9rem; color: #999;">Estamos preparando nuevos modelos para ti.</p></div>`;
         return;
     }
-    
     filtrados.forEach(p => {
         const div = document.createElement('div');
         div.className = 'producto-galeria';
-        
-        // Construir array completo de imágenes (portada + extras)
         const todasImagenes = [p.imagen, ...(p.imagenes_extra || [])];
         const imagenesStr = todasImagenes.join('||');
         const tallasHTML = renderizarTallas(p.tallas);
-        const badgeHTML = p.precio === 0 ? 
-            '<span class="badge proximamente">🔜 Próximamente</span>' : '';
-        
+        const badgeHTML = p.precio === 0 ? '<span class="badge proximamente">🔜 Próximamente</span>' : '';
         div.innerHTML = `
             ${badgeHTML}
-            <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" 
-                 onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Sin+Imagen'"
-                 onclick="abrirCarrusel(this.dataset.imagenes.split('||'))" 
-                 style="cursor: pointer;"
-                 data-imagenes="${imagenesStr}">
+            <img src="${p.imagen}" alt="${p.nombre}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Sin+Imagen'" onclick="abrirCarrusel(this.dataset.imagenes.split('||'))" style="cursor: pointer;" data-imagenes="${imagenesStr}">
             <h4>${p.nombre}</h4>
             ${tallasHTML}
             ${p.precio > 0 ? `<p class="precio">$${p.precio.toFixed(2)}</p>` : ''}
-            ${p.precio > 0 ? 
-                `<button class="boton" onclick="agregarCarrito('${p.nombre}', ${p.precio})">
-                    <i class="fas fa-shopping-cart"></i> Agregar al carrito
-                </button>` : 
-                `<button class="boton" disabled style="opacity:0.5; cursor:not-allowed;">
-                    <i class="fas fa-clock"></i> Próximamente
-                </button>`
-            }
+            ${p.precio > 0 ? `<button class="boton" onclick="agregarCarrito('${p.nombre}', ${p.precio})"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>` : `<button class="boton" disabled style="opacity:0.5; cursor:not-allowed;"><i class="fas fa-clock"></i> Próximamente</button>`}
         `;
         contenedor.appendChild(div);
     });
 }
 
-// ===== RENDERIZAR CATEGORÍAS (SIN ICONOS) =====
+// ===== RENDERIZAR CATEGORÍAS =====
 function renderizarCategorias() {
     const contenedor = document.getElementById('lista-categorias');
     contenedor.innerHTML = '';
-    
-    const categorias = [
-        { id: 'leggings', nombre: 'Leggings' },
-        { id: 'enterizos', nombre: 'Enterizos' },
-        { id: 'conjuntos', nombre: 'Conjuntos' },
-        { id: 'shorts', nombre: 'Shorts' }
-    ];
-    
+    const categorias = [{ id: 'leggings', nombre: 'Leggings' }, { id: 'enterizos', nombre: 'Enterizos' }, { id: 'conjuntos', nombre: 'Conjuntos' }, { id: 'shorts', nombre: 'Shorts' }];
     const infoCategoria = {
-        leggings: { 
-            imagen: 'img/productos/leggings/negro tye dye/portada.jpg',
-            texto: `${productos.filter(p => p.categoria === 'leggings' && p.precio > 0).length} modelos disponibles`
-        },
-        conjuntos: { 
-            imagen: 'img/productos/conjuntos/top y legging animal print/portada.jpg',
-            texto: `${productos.filter(p => p.categoria === 'conjuntos' && p.precio > 0).length} modelos disponibles`
-        },
-        enterizos: { 
-            imagen: 'img/productos/enterizos/jumpsuit sugar pink/portada.jpg',
-            texto: `${productos.filter(p => p.categoria === 'enterizos' && p.precio > 0).length} modelos disponibles`
-        },
-        shorts: { 
-            imagen: 'img/productos/shorts/azul/portada.jpg',
-            texto: `${productos.filter(p => p.categoria === 'shorts' && p.precio > 0).length} modelos disponibles`
-        }
+        leggings: { imagen: 'img/productos/leggings/negro tye dye/portada.jpg', texto: `${productos.filter(p => p.categoria === 'leggings' && p.precio > 0).length} modelos disponibles` },
+        conjuntos: { imagen: 'img/productos/conjuntos/top y legging animal print/portada.jpg', texto: `${productos.filter(p => p.categoria === 'conjuntos' && p.precio > 0).length} modelos disponibles` },
+        enterizos: { imagen: 'img/productos/enterizos/jumpsuit sugar pink/portada.jpg', texto: `${productos.filter(p => p.categoria === 'enterizos' && p.precio > 0).length} modelos disponibles` },
+        shorts: { imagen: 'img/productos/shorts/azul/portada.jpg', texto: `${productos.filter(p => p.categoria === 'shorts' && p.precio > 0).length} modelos disponibles` }
     };
-    
     categorias.forEach(cat => {
         const info = infoCategoria[cat.id];
         const div = document.createElement('div');
         div.className = 'producto';
-        
         const tieneProductos = productos.some(p => p.categoria === cat.id && p.precio > 0);
-        
         const onclickAttr = tieneProductos ? `onclick="mostrarCategoria('${cat.id}')" style="cursor:pointer;"` : '';
         const disabledAttr = !tieneProductos ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : '';
-        
         div.innerHTML = `
-            <img src="${info.imagen}" alt="${cat.nombre}" 
-                 onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=${cat.nombre}'"
-                 ${onclickAttr}>
+            <img src="${info.imagen}" alt="${cat.nombre}" onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=${cat.nombre}'" ${onclickAttr}>
             <h3 ${onclickAttr}>${cat.nombre}</h3>
             <p>${info.texto}</p>
-            <button class="boton" 
-                    onclick="mostrarCategoria('${cat.id}')"
-                    ${disabledAttr}>
-                ${tieneProductos ? 'Ver modelos' : '🔜 Próximamente'}
-            </button>
+            <button class="boton" onclick="mostrarCategoria('${cat.id}')" ${disabledAttr}>${tieneProductos ? 'Ver modelos' : '🔜 Próximamente'}</button>
         `;
         contenedor.appendChild(div);
     });
@@ -246,39 +163,25 @@ function renderizarCategorias() {
 // ===== CARRUSEL DE IMÁGENES (Galería principal) =====
 let imagenesCarrusel = [];
 let indiceActual = 0;
-
 function abrirCarrusel(imagenes) {
-    if (typeof imagenes === 'string') {
-        imagenes = imagenes.split('||');
-    }
+    if (typeof imagenes === 'string') imagenes = imagenes.split('||');
     if (!imagenes || imagenes.length === 0) return;
-    
     imagenesCarrusel = imagenes;
     indiceActual = 0;
-    
     const modal = document.getElementById('modal-carrusel');
     const imagen = document.getElementById('carrusel-imagen');
     const indice = document.getElementById('carrusel-indice');
-    
     imagen.src = imagenesCarrusel[0];
     indice.textContent = `1 / ${imagenesCarrusel.length}`;
-    
     modal.classList.add('abierto');
     document.body.style.overflow = 'hidden';
 }
-
-function cerrarCarrusel() {
-    document.getElementById('modal-carrusel').classList.remove('abierto');
-    document.body.style.overflow = '';
-}
-
+function cerrarCarrusel() { document.getElementById('modal-carrusel').classList.remove('abierto'); document.body.style.overflow = ''; }
 function cambiarImagen(direccion) {
     if (!imagenesCarrusel || imagenesCarrusel.length === 0) return;
-    
     indiceActual += direccion;
     if (indiceActual < 0) indiceActual = imagenesCarrusel.length - 1;
     else if (indiceActual >= imagenesCarrusel.length) indiceActual = 0;
-    
     const imagen = document.getElementById('carrusel-imagen');
     const indice = document.getElementById('carrusel-indice');
     imagen.src = imagenesCarrusel[indiceActual];
@@ -288,113 +191,45 @@ function cambiarImagen(direccion) {
 // ===== CARRITO =====
 function cargarCarrito() {
     const datos = localStorage.getItem('carritoAura');
-    if (datos) {
-        try {
-            carrito = JSON.parse(datos);
-        } catch (e) {
-            carrito = [];
-        }
-    } else {
-        carrito = [];
-    }
+    if (datos) { try { carrito = JSON.parse(datos); } catch (e) { carrito = []; } } else { carrito = []; }
     actualizarCarrito();
 }
-
-function guardarCarrito() {
-    localStorage.setItem('carritoAura', JSON.stringify(carrito));
-}
-
+function guardarCarrito() { localStorage.setItem('carritoAura', JSON.stringify(carrito)); }
 function crearItemCarritoHTML(producto, indice) {
     const subtotal = producto.precio * producto.cantidad;
-    return `
-        <div class="item-carrito">
-            <strong>${producto.nombre}</strong><br>
-            <button onclick="disminuirCantidad(${indice})">➖</button>
-            ${producto.cantidad}
-            <button onclick="aumentarCantidad(${indice})">➕</button>
-            <button onclick="eliminarProducto(${indice})">❌</button>
-            <br>
-            $${subtotal.toFixed(2)}
-            <hr>
-        </div>
-    `;
+    return `<div class="item-carrito"><strong>${producto.nombre}</strong><br><button onclick="disminuirCantidad(${indice})">➖</button> ${producto.cantidad} <button onclick="aumentarCantidad(${indice})">➕</button> <button onclick="eliminarProducto(${indice})">❌</button><br>$${subtotal.toFixed(2)}<hr></div>`;
 }
-
 function agregarCarrito(nombre, precio) {
     const existente = carrito.find(item => item.nombre === nombre);
-    if (existente) {
-        existente.cantidad++;
-    } else {
-        carrito.push({ nombre, precio, cantidad: 1 });
-    }
-    actualizarCarrito();
-    guardarCarrito();
-    abrirCarrito();
+    if (existente) { existente.cantidad++; } else { carrito.push({ nombre, precio, cantidad: 1 }); }
+    actualizarCarrito(); guardarCarrito(); abrirCarrito();
 }
-
 function actualizarCarrito() {
     const lista = document.getElementById('listaCarrito');
     const contador = document.getElementById('contador');
     const totalEl = document.getElementById('total');
     lista.innerHTML = '';
-    let suma = 0;
-    let cantidad = 0;
+    let suma = 0; let cantidad = 0;
     carrito.forEach((producto, i) => {
         lista.innerHTML += crearItemCarritoHTML(producto, i);
         const subtotal = producto.precio * producto.cantidad;
-        suma += subtotal;
-        cantidad += producto.cantidad;
+        suma += subtotal; cantidad += producto.cantidad;
     });
     contador.textContent = cantidad;
     totalEl.textContent = suma.toFixed(2);
-
-    if (contador) {
-        contador.classList.add('cambio');
-        setTimeout(() => contador.classList.remove('cambio'), 300);
-    }
+    if (contador) { contador.classList.add('cambio'); setTimeout(() => contador.classList.remove('cambio'), 300); }
 }
-
-function aumentarCantidad(indice) {
-    carrito[indice].cantidad++;
-    actualizarCarrito();
-    guardarCarrito();
-}
-
-function disminuirCantidad(indice) {
-    carrito[indice].cantidad--;
-    if (carrito[indice].cantidad <= 0) {
-        carrito.splice(indice, 1);
-    }
-    actualizarCarrito();
-    guardarCarrito();
-}
-
-function eliminarProducto(indice) {
-    carrito.splice(indice, 1);
-    actualizarCarrito();
-    guardarCarrito();
-}
-
-function abrirCarrito() {
-    document.getElementById('carrito').classList.add('abierto');
-}
-
-function cerrarCarrito() {
-    document.getElementById('carrito').classList.remove('abierto');
-}
-
+function aumentarCantidad(indice) { carrito[indice].cantidad++; actualizarCarrito(); guardarCarrito(); }
+function disminuirCantidad(indice) { carrito[indice].cantidad--; if (carrito[indice].cantidad <= 0) carrito.splice(indice, 1); actualizarCarrito(); guardarCarrito(); }
+function eliminarProducto(indice) { carrito.splice(indice, 1); actualizarCarrito(); guardarCarrito(); }
+function abrirCarrito() { document.getElementById('carrito').classList.add('abierto'); }
+function cerrarCarrito() { document.getElementById('carrito').classList.remove('abierto'); }
 function enviarWhatsApp() {
-    if (carrito.length === 0) {
-        alert('El carrito está vacío.');
-        return;
-    }
+    if (carrito.length === 0) { alert('El carrito está vacío.'); return; }
     const nombre = document.getElementById('nombre-cliente').value.trim();
     const direccion = document.getElementById('direccion-cliente').value.trim();
     const pago = document.getElementById('pago-cliente').value;
-    if (!nombre || !direccion) {
-        alert('Por favor, completa tu nombre y dirección antes de finalizar la compra.');
-        return;
-    }
+    if (!nombre || !direccion) { alert('Por favor, completa tu nombre y dirección antes de finalizar la compra.'); return; }
     let mensaje = 'Hola, quiero realizar el siguiente pedido:%0A%0A';
     let total = 0;
     carrito.forEach(p => {
@@ -410,188 +245,99 @@ function enviarWhatsApp() {
     window.open(url, '_blank');
 }
 
-// ===== CARRUSEL DEL HERO (4 IMÁGENES) =====
-const imagenesHero = [
-    'img/portada1.jpg',
-    'img/portada2.jpg',
-    'img/portada3.jpg',
-    'img/portada4.jpg'
-];
+// ===== CARRUSEL DEL HERO =====
+const imagenesHero = ['img/portada1.jpg', 'img/portada2.jpg', 'img/portada3.jpg', 'img/portada4.jpg'];
 let indiceHero = 0;
-
 function cambiarImgHero(direccion) {
     indiceHero += direccion;
     if (indiceHero < 0) indiceHero = imagenesHero.length - 1;
     else if (indiceHero >= imagenesHero.length) indiceHero = 0;
-    
     const imgElement = document.getElementById('img-hero-carrusel');
-    if (imgElement) {
-        imgElement.style.opacity = '0.5';
-        setTimeout(() => {
-            imgElement.src = imagenesHero[indiceHero];
-            imgElement.style.opacity = '1';
-        }, 200);
-    }
+    if (imgElement) { imgElement.style.opacity = '0.5'; setTimeout(() => { imgElement.src = imagenesHero[indiceHero]; imgElement.style.opacity = '1'; }, 200); }
 }
-
-// ===== CARRUSEL DE LA SECCIÓN NOSOTROS (7 IMÁGENES) =====
-const imagenesNosotros = [
-    'img/nosotros/nosotros1.jpg',
-    'img/nosotros/nosotros2.jpg',
-    'img/nosotros/nosotros3.jpg',
-    'img/nosotros/nosotros4.jpg',
-    'img/nosotros/nosotros5.jpg',
-    'img/nosotros/nosotros6.jpg',
-    'img/nosotros/nosotros7.jpg'
-];
+const imagenesNosotros = ['img/nosotros/nosotros1.jpg', 'img/nosotros/nosotros2.jpg', 'img/nosotros/nosotros3.jpg', 'img/nosotros/nosotros4.jpg', 'img/nosotros/nosotros5.jpg', 'img/nosotros/nosotros6.jpg', 'img/nosotros/nosotros7.jpg'];
 let indiceNosotros = 0;
-
 function cambiarImgNosotros(direccion) {
     if (!imagenesNosotros || imagenesNosotros.length === 0) return;
     indiceNosotros += direccion;
     if (indiceNosotros < 0) indiceNosotros = imagenesNosotros.length - 1;
     else if (indiceNosotros >= imagenesNosotros.length) indiceNosotros = 0;
-
     const imgElement = document.getElementById('img-nosotros-carrusel');
     const indiceEl = document.getElementById('nosotros-carrusel-indice');
-    if (imgElement) {
-        imgElement.style.opacity = '0.4';
-        setTimeout(() => {
-            imgElement.src = imagenesNosotros[indiceNosotros];
-            imgElement.style.opacity = '1';
-        }, 200);
-    }
-    if (indiceEl) {
-        indiceEl.textContent = `${indiceNosotros + 1} / ${imagenesNosotros.length}`;
-    }
+    if (imgElement) { imgElement.style.opacity = '0.4'; setTimeout(() => { imgElement.src = imagenesNosotros[indiceNosotros]; imgElement.style.opacity = '1'; }, 200); }
+    if (indiceEl) indiceEl.textContent = `${indiceNosotros + 1} / ${imagenesNosotros.length}`;
 }
 
 // ===== INICIALIZAR =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Completar imágenes extra automáticamente antes de cualquier renderizado
     completarImagenesExtra();
-    
     cargarCarrito();
     mostrarInicio();
-
-    // Menú hamburguesa
     const toggle = document.getElementById('menu-toggle');
     const nav = document.querySelector('nav');
-    if (toggle) {
-        toggle.addEventListener('click', function() {
-            nav.classList.toggle('abierto');
-        });
-    }
-
-    // Cerrar menú al hacer clic en un enlace
-    const enlacesMenu = document.querySelectorAll('nav a');
-    enlacesMenu.forEach(enlace => {
-        enlace.addEventListener('click', function() {
-            nav.classList.remove('abierto');
-        });
-    });
-
-    // Inicializar carrusel hero
+    if (toggle) { toggle.addEventListener('click', function() { nav.classList.toggle('abierto'); }); }
+    document.querySelectorAll('nav a').forEach(enlace => { enlace.addEventListener('click', function() { nav.classList.remove('abierto'); }); });
     const imgHero = document.getElementById('img-hero-carrusel');
-    if (imgHero && imagenesHero.length > 0) {
-        imgHero.src = imagenesHero[0];
-    }
-
-    // Inicializar carrusel nosotros
+    if (imgHero && imagenesHero.length > 0) { imgHero.src = imagenesHero[0]; }
     const imgNosotros = document.getElementById('img-nosotros-carrusel');
     if (imgNosotros && imagenesNosotros.length > 0) {
         imgNosotros.src = imagenesNosotros[0];
         const indiceEl = document.getElementById('nosotros-carrusel-indice');
         if (indiceEl) indiceEl.textContent = `1 / ${imagenesNosotros.length}`;
     }
-
-    // Botón subir
     const btnSubir = document.getElementById('btn-subir');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            btnSubir.style.display = 'block';
-        } else {
-            btnSubir.style.display = 'none';
-        }
-    });
-
-    // Teclas para carrusel
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') cerrarCarrusel();
-        if (e.key === 'ArrowLeft') cambiarImagen(-1);
-        if (e.key === 'ArrowRight') cambiarImagen(1);
-    });
-
-    // Cerrar carrusel al hacer clic fuera
-    document.getElementById('modal-carrusel').addEventListener('click', function(e) {
-        if (e.target === this) cerrarCarrusel();
-    });
-}// ===== FUNCIÓN PARA DESCARGAR CATÁLOGO PDF (html2canvas) =====
-function descargarCatalogoPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('p', 'mm', 'a4');
-
-    // FORZAR que se muestre la tienda antes de tomar la foto
-    mostrarTienda(); 
-    let elemento = document.getElementById('seccion-tienda');
-    }
-
-    // Cambiar el texto del botón mientras se genera
-    const btn = document.querySelector('button[onclick*="descargarCatalogoPDF"]');
-    if(btn) btn.innerText = '⏳ Generando PDF...';
-
-        // Agregar esto ANTES de html2canvas
-    // Ocultar los botones de compra temporalmente
-    const botones = elemento.querySelectorAll('.boton');
-    botones.forEach(btn => btn.style.display = 'none');
-
-    html2canvas(elemento, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#F9F5F0'
-    }).then(canvas => {
-        // Volver a mostrar los botones después de tomar la foto
-        botones.forEach(btn => btn.style.display = ''); 
-        
-    });
-
-    // Tomar la "foto" de la sección
-    html2canvas(elemento, {
-        scale: 2,               // Alta calidad para las imágenes
-        useCORS: true,          // Permite cargar imágenes externas
-        allowTaint: false,
-        backgroundColor: '#F9F5F0' // El color de fondo de tu web (opcional)
-    }).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        
-        // Configurar dimensiones del PDF (A4: 210x297 mm, dejando 10 mm de margen = 190 mm de ancho)
-        const imgWidth = 190; 
-        const pageHeight = 297; 
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
-        let heightLeft = imgHeight;
-        let position = 10; // Margen superior
-
-        // Agregar primera página
-        doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-
-        // Si el catálogo es muy largo, agregar más páginas
-        while (heightLeft > 0) {
-            position = heightLeft - imgHeight + 10; 
-            doc.addPage();
-            doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
-        }
-        
-        // Descargar el archivo
-        doc.save("Catalogo_Aura_Leggings.pdf");
-        
-        // Volver a poner el texto del botón
-        if(btn) btn.innerText = 'Descargar Catálogo PDF';
-    }).catch(error => {
-        console.error("Error al generar el PDF:", error);
-        alert("Hubo un error. Asegúrate de que tu web se esté ejecutando en un servidor local (Live Server) y que las imágenes estén accesibles.");
-        if(btn) btn.innerText = 'Descargar Catálogo PDF';
-    });
+    window.addEventListener('scroll', function() { btnSubir.style.display = window.scrollY > 300 ? 'block' : 'none'; });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') cerrarCarrusel(); if (e.key === 'ArrowLeft') cambiarImagen(-1); if (e.key === 'ArrowRight') cambiarImagen(1); });
+    document.getElementById('modal-carrusel').addEventListener('click', function(e) { if (e.target === this) cerrarCarrusel(); });
 });
+// ===== FUNCIÓN MÁGICA PARA IMPRIMIR CATÁLOGO (CON PIE DE PÁGINA) =====
+function imprimirCatalogoCompleto() {
+    const seccionActual = document.querySelector('.seccion.activa').id;
+
+    mostrarSeccion('seccion-galeria');
+    document.getElementById('titulo-galeria').textContent = 'Catálogo Completo Aura Leggings';
+    const contenedor = document.getElementById('lista-galeria');
+    contenedor.innerHTML = '';
+
+    const todosLosProductos = productos.filter(p => p.precio > 0);
+    
+    // 1. Cargamos todos los productos
+    todosLosProductos.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'producto-galeria';
+        const tallasHTML = renderizarTallas(p.tallas);
+        div.innerHTML = `
+            <img src="${p.imagen}" alt="${p.nombre}" onerror="this.src='https://via.placeholder.com/300x300/E07A8C/FFFFFF?text=Sin+Imagen'">
+            <h4>${p.nombre}</h4>
+            ${tallasHTML}
+            <p class="precio" style="margin-top:5px;">$${p.precio.toFixed(2)}</p>
+        `;
+        contenedor.appendChild(div);
+    });
+
+    // 2. Inyectamos el pie de página especial para el PDF
+    // 2. Inyectamos el pie de página especial para el PDF
+    const footerHTML = `
+        <div id="footer-impresion">
+            <p style="margin: 0; font-weight: 600;">
+                🌐 https://auraec.netlify.app/ &nbsp;|&nbsp; 📱 <a href="https://wa.me/593978660147" style="color: #25D366; text-decoration: none;">+593 97 866 0147</a>
+            </p>
+            <p style="margin: 0; font-size: 0.7rem; color: #999;">Aura Leggings - Ropa deportiva para mujeres excepcionales</p>
+        </div>
+    `;
+    contenedor.insertAdjacentHTML('beforeend', footerHTML);
+
+    // 3. Esperar medio segundo y abrir la impresión
+    setTimeout(() => {
+        window.print();
+
+        // 4. Regresar a la tienda y limpiar el footer temporal
+        mostrarSeccion(seccionActual);
+        if(seccionActual === 'seccion-tienda') renderizarCategorias();
+        
+        // Eliminar el footer de la galería para que no quede en la web
+        const footerImpresion = document.getElementById('footer-impresion');
+        if (footerImpresion) footerImpresion.remove();
+        
+    }, 500);
+}
