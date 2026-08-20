@@ -526,4 +526,58 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modal-carrusel').addEventListener('click', function(e) {
         if (e.target === this) cerrarCarrusel();
     });
+}// ===== FUNCIÓN PARA DESCARGAR CATÁLOGO PDF (html2canvas) =====
+function descargarCatalogoPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'mm', 'a4'); // Vertical, milímetros, formato A4
+
+    // Detectar qué sección está visible (Tienda o Galería de productos)
+    let elemento = document.getElementById('seccion-galeria');
+    if (!elemento.classList.contains('activa')) {
+        elemento = document.getElementById('seccion-tienda');
+    }
+
+    // Cambiar el texto del botón mientras se genera
+    const btn = document.querySelector('button[onclick*="descargarCatalogoPDF"]');
+    if(btn) btn.innerText = '⏳ Generando PDF...';
+
+    // Tomar la "foto" de la sección
+    html2canvas(elemento, {
+        scale: 2,               // Alta calidad para las imágenes
+        useCORS: true,          // Permite cargar imágenes externas
+        allowTaint: false,
+        backgroundColor: '#F9F5F0' // El color de fondo de tu web (opcional)
+    }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        
+        // Configurar dimensiones del PDF (A4: 210x297 mm, dejando 10 mm de margen = 190 mm de ancho)
+        const imgWidth = 190; 
+        const pageHeight = 297; 
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        let heightLeft = imgHeight;
+        let position = 10; // Margen superior
+
+        // Agregar primera página
+        doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // Si el catálogo es muy largo, agregar más páginas
+        while (heightLeft > 0) {
+            position = heightLeft - imgHeight + 10; 
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        
+        // Descargar el archivo
+        doc.save("Catalogo_Aura_Leggings.pdf");
+        
+        // Volver a poner el texto del botón
+        if(btn) btn.innerText = 'Descargar Catálogo PDF';
+    }).catch(error => {
+        console.error("Error al generar el PDF:", error);
+        alert("Hubo un error. Asegúrate de que tu web se esté ejecutando en un servidor local (Live Server) y que las imágenes estén accesibles.");
+        if(btn) btn.innerText = 'Descargar Catálogo PDF';
+    });
 });
