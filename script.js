@@ -526,28 +526,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('modal-carrusel').addEventListener('click', function(e) {
         if (e.target === this) cerrarCarrusel();
     });
-}async function descargarCatalogoPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    
-    // AQUÍ ELIGES QUÉ PARTE DE TU WEB QUERES CONVERTIR A PDF
-    // 'seccion-tienda' mostrará las categorías redondas.
-    // 'seccion-galeria' mostrará los productos filtrados.
-    const elemento = document.getElementById('seccion-tienda'); // Cambia esto a 'seccion-galeria' si quieres los productos específicos.
-
-    // Toma una "foto" del HTML seleccionado
-    const canvas = await html2canvas(elemento, {
-        scale: 2, // Alta calidad
-        useCORS: true // Permite cargar imágenes externas
-    });
-    
-    const imgData = canvas.toDataURL('image/png');
-    
-    // Ajusta la imagen al tamaño del PDF (A4)
-    const imgProps = doc.getImageProperties(imgData);
-    const pdfWidth = doc.internal.pageSize.getWidth();
-    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    
-    doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    doc.save("Catalogo_Aura_Leggings.pdf");
-}
+});
