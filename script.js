@@ -529,17 +529,31 @@ document.addEventListener('DOMContentLoaded', function() {
 }// ===== FUNCIÓN PARA DESCARGAR CATÁLOGO PDF (html2canvas) =====
 function descargarCatalogoPDF() {
     const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('p', 'mm', 'a4'); // Vertical, milímetros, formato A4
+    const doc = new jsPDF('p', 'mm', 'a4');
 
-    // Detectar qué sección está visible (Tienda o Galería de productos)
-    let elemento = document.getElementById('seccion-galeria');
-    if (!elemento.classList.contains('activa')) {
-        elemento = document.getElementById('seccion-tienda');
+    // FORZAR que se muestre la tienda antes de tomar la foto
+    mostrarTienda(); 
+    let elemento = document.getElementById('seccion-tienda');
     }
 
     // Cambiar el texto del botón mientras se genera
     const btn = document.querySelector('button[onclick*="descargarCatalogoPDF"]');
     if(btn) btn.innerText = '⏳ Generando PDF...';
+
+        // Agregar esto ANTES de html2canvas
+    // Ocultar los botones de compra temporalmente
+    const botones = elemento.querySelectorAll('.boton');
+    botones.forEach(btn => btn.style.display = 'none');
+
+    html2canvas(elemento, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#F9F5F0'
+    }).then(canvas => {
+        // Volver a mostrar los botones después de tomar la foto
+        botones.forEach(btn => btn.style.display = ''); 
+        
+    });
 
     // Tomar la "foto" de la sección
     html2canvas(elemento, {
